@@ -1,0 +1,71 @@
+<mat-sidenav-container>
+  
+  <mat-sidenav 
+    #drawer 
+    class="sidenav" 
+    fixedInViewport    
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false" >
+    
+    <mat-toolbar class="h-auto d-flex justify-content-center align-items-center">
+      <span class="toolbar__title--text font-pump-demi mt-2">HIDALGO <br> e <br> HIDALGO</span>
+    </mat-toolbar>
+    
+    <mat-nav-list class="navigation">
+
+      <main class="navigation">
+        @for (item of menuItems; track $index) {
+          <section class="navigation__container">
+            <div 
+              [ngClass]="{'active': isActivePath(item.path!)}" 
+              class="navigation__module">
+              <button 
+                class="accordion-button" 
+                type="button"
+                [routerLink]="item.path" >
+                <div class="navigation__icon">
+                  <i class="{{ item.data?.['icon'] }}"></i>
+                </div>
+                <div class="navigation__label">
+                  <span>{{ item.data?.['label']}}</span>
+                </div>
+              </button>
+            </div>
+          </section>
+        }
+      </main>
+    </mat-nav-list>
+  </mat-sidenav>
+  
+  <mat-sidenav-content [class]="{ 'tool__full': !drawer.opened }">
+    <mat-toolbar color="primary">
+      <div class="toolbar-top">
+        <section class="toolbar-top-left">
+          <button
+            type="button"
+            mat-icon-button
+            (click)="drawer.toggle()">
+            <mat-icon class="text-white">menu</mat-icon>        
+          </button>
+          <span class="toolbar-top-right__title">Flores García Jhonny Roberth</span>
+        </section>
+        <div class="toolbar-top-right">
+          <button 
+            class="toolbar-logout"
+            (click)="exitSession()">
+            <span class="toolbar__text">Cerrar Sesión</span>
+          </button>
+        </div>
+      </div>
+    </mat-toolbar>
+
+    <main class="container__view p-3 p-md-4 ">
+      <section class="container-custom container-custom__view">
+        <router-outlet />
+      </section>
+    </main>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

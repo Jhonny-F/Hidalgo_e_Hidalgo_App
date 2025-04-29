@@ -1,0 +1,106 @@
+<section class="w-100 min-vh-100 d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="row g-0 d-flex align-items-center justify-content-center">
+            <div class="col-lg-5">
+                <div class="card rounded-0 login__card bg-body-tertiary">
+                    <div class="py-3 px-5 d-grid gap-4">
+
+                        <div class="d-flex flex-column gap-2 justify-content-center align-items-center">
+                            <img src="/icons/icon.svg" class="icon__logo" alt="icon">
+                            <span class="fs-4 font-pump-demi">BIENVENIDO</span>
+                        </div>
+
+                        <hr class="mt-0">
+
+                        <form 
+                            class="d-grid gap-4"
+                            [formGroup]="form"                             
+                            (ngSubmit)="onSubmit()">
+
+                            <div class="form__group">
+                                <input 
+                                    type="text" 
+                                    class="form__input" 
+                                    placeholder="Nombre de usuario" 
+                                    autocomplete="off"
+                                    formControlName="username" >
+                                <label class="form__label">Usuario</label>
+                                <i class="form__icon fa-solid fa-circle-user"></i>
+                                <div class="form__alerts">
+                                    @if (username.invalid && (username.dirty || username.touched)) {
+                                        @if (username.errors?.['required']) {
+                                          <p class="form__alert">Campo obligatorio</p>
+                                        } @else if (username.errors?.['maxlength']) {
+                                          <p class="form__alert">Excedió el máximo de caracteres</p>
+                                        }
+                                      }                            
+                                </div>
+                            </div>
+
+                            <div class="form__group">
+                                <input 
+                                    [type]="isPasswordVisible() ? 'text' : 'password'" 
+                                    class="form__input" 
+                                    placeholder="Contraseña de seguridad" 
+                                    autocomplete="off"
+                                    formControlName="password" >
+                                <label class="form__label">Contraseña</label>
+                                <i 
+                                    class="form__icon form__icon--eye"
+                                    [class]="isPasswordVisible() ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'" 
+                                    (click)="togglePasswordVisibility()">
+                                </i>
+                                <div class="form__alerts">
+                                    @if (password.invalid && (password.dirty || password.touched)) {
+                                        @if (password.errors?.['required']) {
+                                          <p class="form__alert">Campo obligatorio</p>
+                                        } @else if (password.errors?.['maxlength']) {
+                                          <p class="form__alert">Excedió el máximo de caracteres</p>
+                                        }
+                                      }                            
+                                </div>
+                            </div>
+
+                            <div class="button">
+                                <button type="submit" class="button__control float-end">
+                                    @if (!isLoading) {
+                                        <div class="spinner-border spinner-border-sm"></div>
+                                    } @else {
+                                        <span class="button__text">Iniciar Sesión</span>
+                                    }
+                                </button>
+                            </div>
+                            
+                            <div class="text-center mx-auto mt-2">
+                                <p class="footer__text">
+                                    Desde 1961, somos una empresa líder en construcción y gerencia de infraestructura.
+                                </p>
+                                <div class="d-flex justify-content-center gap-3 mb-2">
+                                    @for (item of socialMedia; track $index) {
+                                        <a 
+                                            class="social-link"
+                                            [href]="item.url"
+                                            target="_blank">
+                                            <i 
+                                                class="social-link__icon"
+                                                [class]="item.icon"></i>
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 login__image-container">
+                <img 
+                    src="/images/login__image.png" 
+                    class="login__image"
+                    alt="image" />
+            </div>
+
+        </div>
+    </div>
+
+</section>

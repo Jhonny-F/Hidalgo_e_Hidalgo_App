@@ -1,0 +1,78 @@
+section {
+    --s: 80px;
+    --c1: white;
+    --c2: whitesmoke;
+    --_g: #0000 8%, var(--c1) 0 17%, #0000 0 58%;
+    background:
+        linear-gradient(135deg, #0000 20.5%, var(--c1) 0 29.5%, #0000 0) 0 calc(var(--s)/4),
+        linear-gradient(45deg, var(--_g)) calc(var(--s)/2) 0,
+        linear-gradient(135deg, var(--_g), var(--c1) 0 67%, #0000 0),
+        linear-gradient(45deg, var(--_g), var(--c1) 0 67%, #0000 0 83%, var(--c1) 0 92%, #0000 0),
+        var(--c2);
+    background-size: var(--s) var(--s);
+}
+
+.card {
+    border-color: var(--color-black);
+    box-shadow: 
+        0 1px 3px rgba(0,0,0,0.12), 
+        0 1px 2px rgba(0,0,0,0.24);
+}
+
+.icon__logo {
+    width: 160px;
+}
+
+.social-link {
+    background-color: var(--color-primary);
+    text-decoration: none;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .3s ease-in-out;
+}
+
+.social-link:hover {
+    background-color: #0f73ad;
+}
+
+.social-link__icon {
+    font-size: 13px;
+}
+
+.footer__text {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.login__card {
+    margin-right: -50px;
+}
+
+.login__image-container {
+    height: 90vh;
+    overflow: hidden;
+    border: 1px solid #9999996e;
+}
+
+.login__image {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 991.98px) {
+    .login__card {
+        margin-right: 0;
+    }
+
+    .login__image-container {
+        display: none;
+    }
+}
