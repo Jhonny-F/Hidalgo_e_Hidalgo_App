@@ -1,0 +1,19 @@
+<section class="detail-container">
+    <div class="detail-header">
+        <h2 class="detail-title">{{ entity.name }}</h2>
+        <button class="button__action position-absolute top-0 end-0 m-0" (click)="onClose()">×</button>
+    </div>
+
+    <div class="detail-content">
+        <div class="image-container">
+            <img [src]="entity.imageUrl" alt="Imagen de {{ entity.name }}" class="detail-image" />
+        </div>
+
+        <div class="info-container">
+            <p><strong>Tipo:</strong> {{ entity.type }}</p>
+            <p><strong>Marca:</strong> {{ entity.brand }}</p>
+            <p><strong>Modelo:</strong> {{ entity.model }}</p>
+            <p><strong>País de origen:</strong> {{ entity.originCountry }}</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,105 @@
+<section class="container-fluid w-100 h-10 p-4">
+    <p class="text-center font-pump-demi h4">
+        @switch (data.mode) {
+            @case ('create') { Crear }
+            @case ('edit') { Editar }
+        }
+        Maquinaria
+    </p>
+
+    <button class="button__action position-absolute top-0 end-0 m-0" (click)="onCancel()">×</button>
+
+    <hr>
+
+    <main class="px-1 pt-4 pb-0">
+        <form [formGroup]="form" class="row row-cols-2">
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Nombre de la máquina" formControlName="name" />
+                    <label class="form__label">Nombre</label>
+                    <i class="form__icon fa-solid fa-tag"></i>
+                    <div class="form__alerts">
+                        @if (name.invalid && (name.dirty || name.touched)) {
+                            <p class="form__alert">Campo obligatorio</p>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Tipo de máquina" formControlName="type" />
+                    <label class="form__label">Tipo</label>
+                    <i class="form__icon fa-solid fa-industry"></i>
+                    <div class="form__alerts">
+                        @if (type.invalid && (type.dirty || type.touched)) {
+                            <p class="form__alert">Campo obligatorio</p>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Marca" formControlName="brand" />
+                    <label class="form__label">Marca</label>
+                    <i class="form__icon fa-solid fa-registered"></i>
+                    <div class="form__alerts">
+                        @if (brand.invalid && (brand.dirty || brand.touched)) {
+                            <p class="form__alert">Campo obligatorio</p>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Modelo" formControlName="model" />
+                    <label class="form__label">Modelo</label>
+                    <i class="form__icon fa-solid fa-cogs"></i>
+                    <div class="form__alerts">
+                        @if (model.invalid && (model.dirty || model.touched)) {
+                            <p class="form__alert">Campo obligatorio</p>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="País de origen"
+                        formControlName="originCountry" />
+                    <label class="form__label">País</label>
+                    <i class="form__icon fa-solid fa-globe"></i>
+                    <div class="form__alerts">
+                        @if (originCountry.invalid && (originCountry.dirty || originCountry.touched)) {
+                            <p class="form__alert">Campo obligatorio</p>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="URL de imagen" formControlName="imageUrl" />
+                    <label class="form__label">URL de imagen</label>
+                    <i class="form__icon fa-solid fa-image"></i>
+                    <div class="form__alerts">
+                        @if (imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)) {
+                            <p class="form__alert">Campo obligatorio</p>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="button w-100">
+                <button type="submit" (click)="onSubmit()" class="button__control button__control--black px-5">
+                    <span class="small fw-medium">
+                        @if (data.mode === 'create') { Crear }
+                        @else if (data.mode === 'edit') { Guardar }
+                    </span>
+                </button>
+            </div>
+        </form>
+    </main>
+</section>

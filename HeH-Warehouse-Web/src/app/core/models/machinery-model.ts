@@ -5,4 +5,5 @@ export interface MachineryModel {
     brand: string
     model: string
     originCountry: string
+    imageUrl: string;
 }
