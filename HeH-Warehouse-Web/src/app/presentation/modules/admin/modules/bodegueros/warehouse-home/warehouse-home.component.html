@@ -1,5 +1,6 @@
 <h2>Gestión de Bodegueros</h2>
-<button mat-raised-button color="primary">Agregar Bodega</button>
+
+<button mat-raised-button color="accent" (click)="abrirFormularioIngreso()">Agregar Bodega</button>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="nombre">
     <th mat-header-cell *matHeaderCellDef> Nombre </th>
