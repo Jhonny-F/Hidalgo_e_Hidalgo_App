@@ -1,4 +1,9 @@
 export interface WarehouseModel {
     id?: number
-    firstName?: string
+    fullName?: string
+    identification: string
+    phone: string
+    email: string
+    yearsOfExperience: number
+    shift: 'Mañana' | 'Tarde' | 'Noche';
 }

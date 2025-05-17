@@ -1,17 +1,75 @@
-<h2>Gestión de Bodegueros</h2>
+<section class="container-fluid w-100 h-10 p-0">
 
-<button mat-raised-button color="accent" (click)="abrirFormularioIngreso()">Agregar Bodega</button>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <ng-container matColumnDef="nombre">
-    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-    <td mat-cell *matCellDef="let bodega"> {{bodega.nombre}} </td>
-  </ng-container>
+    <section class="panel__body p-2 p-md-3">
 
-  <ng-container matColumnDef="direccion">
-    <th mat-header-cell *matHeaderCellDef> Dirección </th>
-    <td mat-cell *matCellDef="let bodega"> {{bodega.direccion}} </td>
-  </ng-container>
+        <section class="d-flex gap-3">
+            <div class="form__field w-100">
+                <div class="form__input-wrapper">
+                    <i class="form__icon fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="form__input" placeholder="Buscar (cédula, nombres, etc)..."
+                        (keyup)="applyFilter($event)" #input />
+                </div>
+            </div>
+            <div class="button">
+                <button type="submit" class="button__control button__control--black px-5">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </section>
+        
+        @if (isLoading()) {
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        }
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+        <main class="container__table">
+            <mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="identification">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <span class="container__table--title">cédula</span>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.identification }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="fullName">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <span class="container__table--title">Nombres</span>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.fullName }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="shift">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <span class="container__table--title">Turno</span>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.shift }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>
+                        <span class="container__table--title">Acciones</span>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="d-flex justify-content-center">
+                        <button type="button" class="button__action">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </button>
+                        <button type="button" class="button__action">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button type="button" class="button__action">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"
+                    class="table__header"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+            </mat-table>
+        </main>
+        <mat-paginator [pageSizeOptions]="[25]" [pageSizeOptions]="[25, 50, 75, 100]"></mat-paginator>
+    </section>
+
+
+</section>

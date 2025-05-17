@@ -1,71 +1,74 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog'; // Importa MatDialog y MatDialogModule
-import { DialogBodeguerosComponent } from './dialog-bodegueros.component'; // Importa el componente del diálogo
+import { Observable, Subject, takeUntil } from 'rxjs';
+import { AfterViewInit, Component, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 
-interface Bodega {
-  id: number;
-  nombre: string;
-  direccion?: string;
-  // ... otras propiedades
-}
+import { MatDialog } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+
+import { ToastService } from '@core/common/toast.service';
+import { WarehouseModel } from '@core/models/warehouse-model';
+import { WarehouseService } from '@core/services/warehouse.service';
 
 @Component({
   selector: 'app-warehouse-home',
   standalone: true,
   imports: [
     CommonModule,
+    MatSortModule,
     MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule, // Asegúrate de tener MatDialogModule aquí
-    DialogBodeguerosComponent // Importa el componente del diálogo
+    MatTooltipModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
   ],
   templateUrl: './warehouse-home.component.html',
   styleUrls: ['./warehouse-home.component.css']
 })
 export class WarehouseHomeComponent implements OnInit {
-  bodeguerosData: Bodega[] = [
-    { id: 1, nombre: 'Bodega Central', direccion: 'Quito' },
-    { id: 2, nombre: 'Bodega Norte', direccion: 'Guayaquil' }
-  ];
-  dataSource = new MatTableDataSource(this.bodeguerosData);
-  displayedColumns: string[] = ['nombre', 'direccion'];
 
-  constructor(public dialog: MatDialog) { } // Inyecta el servicio MatDialog
+  public isLoading = signal<boolean>(false);
+  public dataSource = new MatTableDataSource<WarehouseModel>();
+  public displayedColumns: string[] = ['identification', 'fullName', 'shift', 'actions'];
+
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(
+    private _dialog: MatDialog,
+    private _toast: ToastService,
+    private _warehouseService: WarehouseService,
+  ) { }
 
   ngOnInit(): void {
+    this.loadWarehouse();
   }
 
-  abrirFormularioIngreso(bodega?: Bodega): void {
-    const dialogRef = this.dialog.open(DialogBodeguerosComponent, {
-      width: '400px',
-      data: bodega ? { ...bodega, esEdicion: true, nombre: bodega.nombre, direccion: bodega.direccion } : { esEdicion: false }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('El diálogo fue cerrado', result);
-      if (result) {
-        if (result.esEdicion) {
-          // Lógica para editar una bodega existente
-          const index = this.bodeguerosData.findIndex(b => b.id === bodega?.id);
-          if (index !== -1 && bodega) {
-            this.bodeguerosData[index] = { ...bodega, nombre: result.nombre, direccion: result.direccion };
-          }
-        } else {
-          // Lógica para agregar una nueva bodega
-          const newBodega: Bodega = {
-            id: this.bodeguerosData.length > 0 ? Math.max(...this.bodeguerosData.map(b => b.id)) + 1 : 1,
-            nombre: result.nombre,
-            direccion: result.direccion
-          };
-          this.bodeguerosData.push(newBodega);
-        }
-        this.dataSource = new MatTableDataSource(this.bodeguerosData); // Actualiza el dataSource
-      }
-    });
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    if (this.dataSource.data.length > 0) {
+      this.paginator._intl.itemsPerPageLabel = "Items por Página ";
+    }
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  private loadWarehouse() {
+    this.isLoading.set(true)
+    this._warehouseService.getAll().subscribe({
+      next: (data: WarehouseModel[]) => this.dataSource.data = data,
+      error: () => this.isLoading.set(false),
+      complete: () => this.isLoading.set(false)
+    })
+  }
+
 }
