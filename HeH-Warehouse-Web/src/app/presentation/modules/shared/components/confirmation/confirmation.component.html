@@ -1,0 +1,21 @@
+<section class="card overflow-hidden bg-white border-0 rounded-0">
+    <header class="p-3">
+        <figure 
+            [class]="type() ? 'card__image--primary' : 'card__image--alert'"
+            class="card__image d-flex justify-content-center align-items-center rounded-circle m-0 mx-auto">
+            <mat-icon class="fw-bolder text-white">check</mat-icon>
+        </figure>
+        <div class="m-3 text-center">
+            <span 
+                [class]="type() ? 'card__title--primary' : 'card__title--alert'"
+                class="font-nabulist fs-3 card__title">Confirmar Acción</span>
+            <p class="card__message my-3 text-muted">Por favor, confirma si deseas proceder con esta acción. Una vez
+                confirmada, no podrás deshacer los cambios realizados.</p>
+        </div>
+        <footer class="my-2 mx-3">
+            <button            
+                [class]="type() ? 'card__button--primary' : 'card__button--alert'"
+                class="font-nabulist shadow-sm border-0 w-100 text-white justify-content-center py-2" (click)="accept()">Confirmar</button>
+        </footer>
+    </header>
+</section>

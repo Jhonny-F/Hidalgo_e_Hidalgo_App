@@ -1,0 +1,130 @@
+<section class="container-fluid w-100 h-10 p-4">
+    <p class="text-center font-pump-demi h4">
+        @switch (data.mode) {
+            @case ('create') { Crear }
+            @case ('edit') { Editar }
+            @case ('detail') { Detalle de }
+        }
+        Encargado de Almacén
+    </p>
+
+    <button class="button__action position-absolute top-0 end-0 m-0" (click)="onCancel()">×</button>
+
+    <hr>
+
+    <main class="px-1 pt-4 pb-0">
+        <form [formGroup]="form" class="row row-cols-2">
+    
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Nombre completo" autocomplete="off"
+                        formControlName="fullName" />
+                    <label class="form__label">Nombre completo</label>
+                    <i class="form__icon fa-solid fa-user"></i>
+                    <div class="form__alerts">
+                        @if (fullName.invalid && (fullName.dirty || fullName.touched)) {
+                            @if (fullName.errors?.['required']) {
+                                <p class="form__alert">Campo obligatorio</p>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Número de cédula" autocomplete="off"
+                        formControlName="identification" />
+                    <label class="form__label">Cédula</label>
+                    <i class="form__icon fa-solid fa-id-card"></i>
+                    <div class="form__alerts">
+                        @if (identification.invalid && (identification.dirty || identification.touched)) {
+                            @if (identification.errors?.['required']) {
+                                <p class="form__alert">Campo obligatorio</p>
+                            } 
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Teléfono" autocomplete="off" formControlName="phone" />
+                    <label class="form__label">Teléfono</label>
+                    <i class="form__icon fa-solid fa-phone"></i>
+                    <div class="form__alerts">
+                        @if (phone.invalid && (phone.dirty || phone.touched)) {
+                            @if (phone.errors?.['required']) {
+                                <p class="form__alert">Campo obligatorio</p>
+                            }
+                        }
+                    </div>
+                </div>    
+            </div>
+                        
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="email" class="form__input" placeholder="Correo electrónico" autocomplete="off"
+                        formControlName="email" />
+                    <label class="form__label">Correo electrónico</label>
+                    <i class="form__icon fa-solid fa-envelope"></i>
+                    <div class="form__alerts">
+                        @if (email.invalid && (email.dirty || email.touched)) {
+                            @if (email.errors?.['required']) {
+                                <p class="form__alert">Campo obligatorio</p>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="number" class="form__input" placeholder="Años de experiencia"
+                        formControlName="yearsOfExperience" />
+                    <label class="form__label">Años de experiencia</label>
+                    <i class="form__icon fa-solid fa-briefcase"></i>
+                    <div class="form__alerts">
+                        @if (yearsOfExperience.invalid && (yearsOfExperience.dirty || yearsOfExperience.touched)) {
+                            @if (yearsOfExperience.errors?.['required']) {
+                                <p class="form__alert">Campo obligatorio</p>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form__container">
+                <div class="form__group">
+                    <select class="form__input form__input--select" formControlName="shift">
+                        <option selected disabled value="">Seleccionar Turno</option>
+                        @for (item of shifts; track $index) {
+                            <option [value]="item">{{ item }}</option>
+                        }
+                    </select>
+                    <label class="form__label">Turno</label>
+                    <i class="form__icon fa-solid fa-clock"></i>
+                    <div class="form__alerts">
+                        @if (shift.invalid && (shift.dirty || shift.touched)) {
+                            @if (shift.errors?.['required']) {
+                                <p class="form__alert">Campo obligatorio</p>
+                            }
+                        }
+                    </div>
+                </div>    
+            </div>
+            
+            @if (data.mode !== 'detail') {
+                <div class="button w-100">
+                    <button type="submit" (click)="onSubmit()" class="button__control button__control--black px-5">
+                        <span class="small fw-medium">
+                            @if (data.mode === 'create') { Crear }
+                            @else if (data.mode === 'edit') { Guardar }
+                        </span>
+                    </button>
+                </div>
+            }
+        </form>
+    </main>
+
+</section>

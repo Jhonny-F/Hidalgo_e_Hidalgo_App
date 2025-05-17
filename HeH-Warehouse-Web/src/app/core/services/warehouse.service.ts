@@ -32,35 +32,35 @@ export class WarehouseService {
     ];
 
     getAll(): Observable<WarehouseModel[]> {
-        return of(this.warehouseKeepers).pipe(delay(300));
+        return of(this.warehouseKeepers);
     }
 
     getById(id: number): Observable<WarehouseModel | undefined> {
         const result = this.warehouseKeepers.find(w => w.id === id);
-        return of(result).pipe(delay(300));
+        return of(result);
     }
 
     create(warehouseKeeper: WarehouseModel): Observable<void> {
         const newId = Math.max(...this.warehouseKeepers.map(w => w.id || 0), 0) + 1;
         this.warehouseKeepers.push({ ...warehouseKeeper, id: newId });
-        return of(void 0).pipe(delay(300));
+        return of(void 0);
     }
 
-    update(id: number, updatedData: Partial<WarehouseModel>): Observable<boolean> {
-        const index = this.warehouseKeepers.findIndex(w => w.id === id);
+    update(updatedWarehouse: WarehouseModel): Observable<void> {
+        const index = this.warehouseKeepers.findIndex(w => w.id === updatedWarehouse.id);
         if (index !== -1) {
-            this.warehouseKeepers[index] = { ...this.warehouseKeepers[index], ...updatedData };
-            return of(true).pipe(delay(300));
+            this.warehouseKeepers[index] = { ...this.warehouseKeepers[index], ...updatedWarehouse };
         }
-        return of(false).pipe(delay(300));
+
+        return of(void 0);
     }
 
     delete(id: number): Observable<boolean> {
         const index = this.warehouseKeepers.findIndex(w => w.id === id);
         if (index !== -1) {
             this.warehouseKeepers.splice(index, 1);
-            return of(true).pipe(delay(300));
+            return of(true);
         }
-        return of(false).pipe(delay(300));
+        return of(false);
     }
 }

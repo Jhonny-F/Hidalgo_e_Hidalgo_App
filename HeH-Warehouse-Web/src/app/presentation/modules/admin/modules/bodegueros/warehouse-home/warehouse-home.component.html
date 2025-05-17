@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="button">
-                <button type="submit" class="button__control button__control--black px-5">
+                <button type="submit" class="button__control button__control--black px-5" (click)="openAdd()">
                     <i class="fa-solid fa-plus"></i>
                 </button>
             </div>
@@ -50,13 +50,13 @@
                         <span class="container__table--title">Acciones</span>
                     </mat-header-cell>
                     <mat-cell *matCellDef="let element" class="d-flex justify-content-center">
-                        <button type="button" class="button__action">
+                        <button type="button" class="button__action" (click)="openDetail(element)">
                             <i class="fa-solid fa-circle-info"></i>
                         </button>
-                        <button type="button" class="button__action">
+                        <button type="button" class="button__action" (click)="openEdit(element)">
                             <i class="fa-solid fa-pen"></i>
                         </button>
-                        <button type="button" class="button__action">
+                        <button type="button" class="button__action" (click)="openDelete(element.id)">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </mat-cell>

@@ -1,0 +1,42 @@
+.card {
+    max-width: 290px;
+}
+
+.card__image {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+}
+
+.card__title {
+    line-height: 1.5rem;
+}
+
+.card__image--primary {
+    background-color: var(--color-primary);
+}
+
+.card__image--alert {
+    background-color: var(--color-danger);
+}
+
+.card__title--primary {
+    color: var(--color-primary);
+}
+
+.card__title--alert {
+    color: var(--color-danger);
+}
+
+.card__message {
+    font-size: small;
+    line-height: 1.05rem;
+}
+
+.card__button--primary {
+    background-color: var(--color-primary);
+}
+
+.card__button--alert {
+    background-color: var(--color-danger);
+}

@@ -159,3 +159,17 @@
     font-size: 14px;
     transition: color 0.2s linear;
 }
+
+.button__action {
+    width: 40px;
+    height: 25px;
+    margin: 0 3px;
+    border: none;
+    padding: 2px;
+    background-color: black;
+    color: white;
+}
+
+.mat-mdc-dialog-surface {
+    border-radius: 0px !important;
+}

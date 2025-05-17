@@ -12,6 +12,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { ToastService } from '@core/common/toast.service';
 import { WarehouseModel } from '@core/models/warehouse-model';
 import { WarehouseService } from '@core/services/warehouse.service';
+import { WarehouseFormComponent } from '../warehouse-form/warehouse-form.component';
+import { ConfirmationComponent } from '@presentation/modules/shared/components/confirmation/confirmation.component';
 
 @Component({
   selector: 'app-warehouse-home',
@@ -69,6 +71,56 @@ export class WarehouseHomeComponent implements OnInit {
       error: () => this.isLoading.set(false),
       complete: () => this.isLoading.set(false)
     })
+  }
+
+  openAdd() {
+    this._dialog.open(WarehouseFormComponent, {
+      autoFocus: false,
+      disableClose: true,
+      width: '450px',
+      data: { mode: 'create' }
+    }).afterClosed().subscribe(() => this.loadWarehouse());
+  }
+
+  openEdit(entity: WarehouseModel) {
+    this._dialog.open(WarehouseFormComponent, {
+      autoFocus: false,
+      disableClose: true,
+      width: '450px',
+      data: { mode: 'edit', entity }
+    }).afterClosed().subscribe(() => this.loadWarehouse());
+  }
+
+  openDetail(entity: WarehouseModel) {
+    this._dialog.open(WarehouseFormComponent, {
+      autoFocus: false,
+      disableClose: true,
+      width: '450px',
+      data: { mode: 'detail', entity }
+    }).afterClosed().subscribe(() => this.loadWarehouse());
+  }
+
+  openDelete(id: number): void {
+    this.openConfirmationDialog(false).subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this._warehouseService.delete(id).subscribe({
+          next: () => {
+            this._toast.success('Eliminación éxitosa')
+            this.loadWarehouse()
+          },
+          error: () => this._toast.error('Ha ocurrido un error')
+        })
+      }
+    })
+  }
+
+  openConfirmationDialog(data: boolean): Observable<boolean> {
+    return this._dialog.open(ConfirmationComponent, {
+      autoFocus: false,
+      disableClose: false,
+      width: 'auto',
+      data: data
+    }).afterClosed();
   }
 
 }
