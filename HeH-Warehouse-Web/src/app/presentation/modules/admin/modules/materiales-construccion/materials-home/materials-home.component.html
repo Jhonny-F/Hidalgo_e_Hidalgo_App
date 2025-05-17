@@ -1,1 +1,82 @@
-<p>materials-home works!</p>
+<section class="container-fluid w-100 h-10 p-0">
+
+    <section class="panel__body p-2 p-md-3">
+
+        <section class="d-flex gap-3">
+            <div class="form__field w-100">
+                <div class="form__input-wrapper">
+                    <i class="form__icon fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="form__input" placeholder="Buscar (nombre, cantidad, unidad de medida, etc)..."
+                        (keyup)="applyFilter($event)" #input />
+                </div>
+            </div>
+            <div class="button">
+                <button type="submit" class="button__control button__control--black px-5" (click)="openAdd()">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </section>
+        
+        @if (isLoading()) {
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        }
+
+        <main class="container__table">
+            <mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <span class="container__table--title">Nombre</span>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="quantity">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <span class="container__table--title">Cantidad</span>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.quantity }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="measure">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <span class="container__table--title">Unidad de medida</span>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.measure }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="location">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <span class="container__table--title">Ubicacion</span>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.location }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>
+                        <span class="container__table--title">Acciones</span>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="d-flex justify-content-center">
+                        <button type="button" class="button__action" (click)="openDetail(element)">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </button>
+                        <button type="button" class="button__action" (click)="openEdit(element)">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button type="button" class="button__action" (click)="openDelete(element.id)">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"
+                    class="table__header"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+            </mat-table>
+        </main>
+        <mat-paginator [pageSizeOptions]="[25]" [pageSizeOptions]="[25, 50, 75, 100]"></mat-paginator>
+    </section>
+
+
+</section>

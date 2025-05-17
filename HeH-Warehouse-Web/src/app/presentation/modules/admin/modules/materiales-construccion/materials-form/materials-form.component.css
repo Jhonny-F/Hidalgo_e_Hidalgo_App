@@ -1,0 +1,11 @@
+.form__container {
+    height: 80px;
+}
+
+.button__control {
+    max-width: 100%;
+}
+
+select {
+    appearance: none;
+}
