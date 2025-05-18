@@ -49,3 +49,19 @@ mat-header-cell.mat-column-actions .container__table--title {
     margin: 0 auto;
 }
 
+.icono-titulo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.page__title {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.page__title--highlight {
+  color: #333;
+}

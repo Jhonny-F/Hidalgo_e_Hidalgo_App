@@ -3,6 +3,7 @@
         @switch (data.mode) {
             @case ('create') { Crear }
             @case ('edit') { Editar }
+            @case ('detail') { Detalle de }
         }
         Material
     </p>
@@ -61,14 +62,16 @@
                 </div>
             </div>
 
-            <div class="button w-100">
-                <button type="submit" (click)="onSubmit()" class="button__control button__control--black px-5">
-                    <span class="small fw-medium">
-                        @if (data.mode === 'create') { Crear }
-                        @else if (data.mode === 'edit') { Guardar }
-                    </span>
-                </button>
-            </div>
+            @if (data.mode !== 'detail') {
+                <div class="button w-100">
+                    <button type="submit" (click)="onSubmit()" class="button__control button__control--black px-5">
+                        <span class="small fw-medium">
+                            @if (data.mode === 'create') { Crear }
+                            @else if (data.mode === 'edit') { Guardar }
+                        </span>
+                    </button>
+                </div>
+            }
         </form>
     </main>
 </section>
