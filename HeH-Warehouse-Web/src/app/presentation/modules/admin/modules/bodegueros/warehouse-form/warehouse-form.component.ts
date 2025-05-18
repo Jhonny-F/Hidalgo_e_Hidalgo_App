@@ -12,14 +12,13 @@ import { ConfirmationComponent } from '@presentation/modules/shared/components/c
 type FormMode = 'create' | 'edit' | 'detail';
 
 @Component({
-  selector: 'app-warehouse-form',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
-  templateUrl: './warehouse-form.component.html',
-  styleUrl: './warehouse-form.component.css'
+    selector: 'app-warehouse-form',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule
+    ],
+    templateUrl: './warehouse-form.component.html',
+    styleUrl: './warehouse-form.component.css'
 })
 export class WarehouseFormComponent implements OnInit {
 

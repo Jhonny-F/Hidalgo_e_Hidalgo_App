@@ -13,21 +13,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    RouterOutlet,
-    RouterLink,
-    CommonModule,
-    MatListModule,
-    MatIconModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatSidenavModule,
-  ]
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    imports: [
+        AsyncPipe,
+        RouterOutlet,
+        RouterLink,
+        CommonModule,
+        MatListModule,
+        MatIconModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatSidenavModule,
+    ]
 })
 export class HomeComponent implements OnInit {
 

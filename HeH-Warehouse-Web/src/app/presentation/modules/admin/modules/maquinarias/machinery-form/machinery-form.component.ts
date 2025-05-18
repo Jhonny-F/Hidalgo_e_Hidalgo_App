@@ -12,14 +12,13 @@ import { ConfirmationComponent } from '@presentation/modules/shared/components/c
 type FormMode = 'create' | 'edit';
 
 @Component({
-  selector: 'app-machinery-form',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
-  templateUrl: './machinery-form.component.html',
-  styleUrl: './machinery-form.component.css'
+    selector: 'app-machinery-form',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule
+    ],
+    templateUrl: './machinery-form.component.html',
+    styleUrl: './machinery-form.component.css'
 })
 export class MachineryFormComponent implements OnInit {
 

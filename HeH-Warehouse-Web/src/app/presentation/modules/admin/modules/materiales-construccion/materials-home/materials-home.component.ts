@@ -16,18 +16,17 @@ import { MaterialsFormComponent } from '../materials-form/materials-form.compone
 import { ConfirmationComponent } from '@presentation/modules/shared/components/confirmation/confirmation.component';
 
 @Component({
-  selector: 'app-materials-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatSortModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-  ],
-  templateUrl: './materials-home.component.html',
-  styleUrls: ['./materials-home.component.css']
+    selector: 'app-materials-home',
+    imports: [
+        CommonModule,
+        MatSortModule,
+        MatTableModule,
+        MatTooltipModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+    ],
+    templateUrl: './materials-home.component.html',
+    styleUrls: ['./materials-home.component.css']
 })
 export class MaterialsHomeComponent implements OnInit {
 

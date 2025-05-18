@@ -12,14 +12,13 @@ import { ConfirmationComponent } from '@presentation/modules/shared/components/c
 type FormMode = 'create' | 'edit' | 'detail';
 
 @Component({
-  selector: 'app-materials-form',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
-  templateUrl: './materials-form.component.html',
-  styleUrl: './materials-form.component.css'
+    selector: 'app-materials-form',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule
+    ],
+    templateUrl: './materials-form.component.html',
+    styleUrl: './materials-form.component.css'
 })
 export class MaterialsFormComponent implements OnInit {
 

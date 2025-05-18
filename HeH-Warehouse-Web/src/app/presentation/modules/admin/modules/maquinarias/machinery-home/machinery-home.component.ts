@@ -16,18 +16,17 @@ import { ConfirmationComponent } from '@presentation/modules/shared/components/c
 import { MachineryDetailComponent } from '../machinery-detail/machinery-detail.component';
 
 @Component({
-  selector: 'app-machinery-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatSortModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-  ],
-  templateUrl: './machinery-home.component.html',
-  styleUrls: ['./machinery-home.component.css']
+    selector: 'app-machinery-home',
+    imports: [
+        CommonModule,
+        MatSortModule,
+        MatTableModule,
+        MatTooltipModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+    ],
+    templateUrl: './machinery-home.component.html',
+    styleUrls: ['./machinery-home.component.css']
 })
 export class MachineryHomeComponent implements OnInit, AfterViewInit {
 

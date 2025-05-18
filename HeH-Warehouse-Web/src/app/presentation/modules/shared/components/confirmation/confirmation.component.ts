@@ -3,11 +3,10 @@ import { Component, Inject, OnInit, signal } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-confirmation',
-  standalone: true,
-  imports: [MatIcon],
-  templateUrl: './confirmation.component.html',
-  styleUrl: './confirmation.component.css'
+    selector: 'app-confirmation',
+    imports: [MatIcon],
+    templateUrl: './confirmation.component.html',
+    styleUrl: './confirmation.component.css'
 })
 export class ConfirmationComponent implements OnInit {
 

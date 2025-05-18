@@ -7,11 +7,10 @@ import { SocialMedia, SocialMediaService } from '@core/services/social-media.ser
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-authentication',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './authentication.component.html',
-  styleUrl: './authentication.component.css'
+    selector: 'app-authentication',
+    imports: [ReactiveFormsModule],
+    templateUrl: './authentication.component.html',
+    styleUrl: './authentication.component.css'
 })
 export class AuthenticationComponent implements OnInit {
 

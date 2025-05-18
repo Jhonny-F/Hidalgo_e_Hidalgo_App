@@ -6,17 +6,16 @@ import { MatInputModule } from '@angular/material/input'; // Importa MatInputMod
 import { MatButtonModule } from '@angular/material/button'; // Importa MatButtonModule
 
 @Component({
-  selector: 'app-cliente-dialog',
-  templateUrl: './dialog-cliente.component.html',
-  styleUrls: ['./dialog-cliente.component.css'],
-  standalone: true,
-  imports: [
-    ReactiveFormsModule, // Importa ReactiveFormsModule para trabajar con formularios reactivos
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatDialogModule // También podrías necesitar MatDialogModule aquí
-  ]
+    selector: 'app-cliente-dialog',
+    templateUrl: './dialog-cliente.component.html',
+    styleUrls: ['./dialog-cliente.component.css'],
+    imports: [
+        ReactiveFormsModule, // Importa ReactiveFormsModule para trabajar con formularios reactivos
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatDialogModule // También podrías necesitar MatDialogModule aquí
+    ]
 })
 export class ClienteDialogComponent {
 

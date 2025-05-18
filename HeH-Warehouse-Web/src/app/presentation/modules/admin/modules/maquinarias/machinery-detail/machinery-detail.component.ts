@@ -4,11 +4,10 @@ import { MachineryModel } from '@core/models/machinery-model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-machinery-detail',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './machinery-detail.component.html',
-  styleUrl: './machinery-detail.component.css'
+    selector: 'app-machinery-detail',
+    imports: [CommonModule],
+    templateUrl: './machinery-detail.component.html',
+    styleUrl: './machinery-detail.component.css'
 })
 export class MachineryDetailComponent {
 

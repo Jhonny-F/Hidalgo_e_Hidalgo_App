@@ -19,21 +19,20 @@ export interface Cliente {
 }
 
 @Component({
-  selector: 'app-clientes',
-  templateUrl: './clientes.component.html',
-  styleUrls: ['./clientes.component.css'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    //ClienteDialogComponent
-  ]
+    selector: 'app-clientes',
+    templateUrl: './clientes.component.html',
+    styleUrls: ['./clientes.component.css'],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        //ClienteDialogComponent
+    ]
 })
 export class ClientesComponent {
   clientes: Cliente[] = [

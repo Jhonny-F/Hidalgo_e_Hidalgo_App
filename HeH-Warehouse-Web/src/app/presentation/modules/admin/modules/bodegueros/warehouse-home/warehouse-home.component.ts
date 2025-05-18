@@ -16,18 +16,17 @@ import { WarehouseFormComponent } from '../warehouse-form/warehouse-form.compone
 import { ConfirmationComponent } from '@presentation/modules/shared/components/confirmation/confirmation.component';
 
 @Component({
-  selector: 'app-warehouse-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatSortModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-  ],
-  templateUrl: './warehouse-home.component.html',
-  styleUrls: ['./warehouse-home.component.css']
+    selector: 'app-warehouse-home',
+    imports: [
+        CommonModule,
+        MatSortModule,
+        MatTableModule,
+        MatTooltipModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+    ],
+    templateUrl: './warehouse-home.component.html',
+    styleUrls: ['./warehouse-home.component.css']
 })
 export class WarehouseHomeComponent implements OnInit {
 
