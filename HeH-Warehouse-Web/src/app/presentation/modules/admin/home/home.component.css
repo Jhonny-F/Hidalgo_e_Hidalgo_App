@@ -185,3 +185,17 @@
   .active .accordion-button .navigation__label {
   color: black;
 }
+.compact-logout-button {
+  padding: 0 18px;
+  height: 34px; /* Reducción de altura */
+  line-height: 34px;
+  font-size: 13px;
+  min-width: auto;
+}
+
+.compact-icon {
+  font-size: 18px; /* Icono más pequeño */
+  height: 18px;
+  width: 18px;
+  margin-right: 4px;
+}

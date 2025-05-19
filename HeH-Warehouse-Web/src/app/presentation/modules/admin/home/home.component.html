@@ -51,11 +51,14 @@
           <span class="toolbar-top-right__title">Proyecto Final</span>
         </section>
         <div class="toolbar-top-right">
-          <button 
-            class="toolbar-logout"
-            (click)="exitSession()">
-            <span class="toolbar__text">Cerrar Sesión</span>
-          </button>
+        <button mat-raised-button 
+        color="warn"
+        class="compact-logout-button"
+        (click)="exitSession()"
+        aria-label="Cerrar sesión">
+          <mat-icon class="compact-icon">logout</mat-icon>
+          <span>Cerrar Sesión</span>
+        </button>
         </div>
       </div>
     </mat-toolbar>
