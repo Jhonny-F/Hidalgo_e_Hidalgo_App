@@ -8,12 +8,17 @@ import { Observable, of } from 'rxjs';
     providedIn: 'root'
 })
 export class ClientesService {
-    private clientes: ClientesModel[] = [ // ✅ Cambia `warehouseKeepers` a `clientes`
-        { id: 1, fullName: "Carlos Pérez", identification: "0102030405", phone: "0991234567",
-          email: "carlos.perez@example.com", address: "Av. Principal", status: "Activo", shift: "Mañana" },
-        { id: 2, fullName: "Luisa Gómez", identification: "0607080910", phone: "0987654321",
-          email: "luisa.gomez@example.com", address: "Calle Secundaria", status: "Inactivo", shift: "Tarde" }
-    ];
+    private clientes: ClientesModel[] = [
+    { id: 1, fullName: "Carlos Santos", identification: "0102030405", phone: "0991234567",
+      email: "carlossan@gmail.com", address: "Av. Quito", status: "Activo", shift: "Mañana" },
+    { id: 2, fullName: "Luisa Astudillo", identification: "0607080910", phone: "0987654321",
+      email: "luisa.ast@outlook.com", address: "Av. Perimetral", status: "Inactivo", shift: "Tarde" },
+    { id: 3, fullName: "Juan Rodríguez", identification: "0708091011", phone: "0976543210",
+      email: "juan.conejito@hotmail.com", address: "Vía Daule", status: "Activo", shift: "Noche" },
+    { id: 4, fullName: "Ana Fernández", identification: "0203040506", phone: "0965432109",
+      email: "ana.fernandez@protonmail.com", address: "Lejos", status: "Activo", shift: "Mañana" }
+];
+
 
     getAll(): Observable<ClientesModel[]> {
         return of(this.clientes);

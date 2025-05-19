@@ -1,9 +1,16 @@
+<div class="d-flex align-items-center mb-4">
+  <img src="https://cdn-icons-png.flaticon.com/512/8522/8522191.png" alt="Icono Clientes" class="icono-titulo" />
+  <h1 class="page__title ms-2 m-0">
+    Gestión de <span class="page__title--highlight">Clientes</span>
+  </h1>
+</div>
+
 <div class="acciones">
   <input [(ngModel)]="filtro" placeholder="Buscar cliente..." class="buscador" />
   <button mat-raised-button color="primary" (click)="abrirDialogo()">Agregar Cliente</button>
 </div>
   <table mat-table [dataSource]="clientesFiltrados" class="mat-elevation-z8">
-
+    
   <ng-container matColumnDef="acciones">
   <th mat-header-cell *matHeaderCellDef> Acciones </th>
   <td mat-cell *matCellDef="let cliente">
@@ -37,7 +44,8 @@
   <td mat-cell *matCellDef="let cliente"> {{cliente.shift}} </td>
 </ng-container>
   
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="custom-header-row"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    
   </table>
   
