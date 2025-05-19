@@ -1,0 +1,74 @@
+<section class="container-fluid w-100 h-10 p-4">
+    <p class="text-center font-pump-demi h4">
+        @switch (data.mode) {
+            @case ('create') { Crear }
+            @case ('edit') { Editar }
+        }
+        Despacho
+    </p>
+
+    <button class="button__action position-absolute top-0 end-0 m-0" (click)="onCancel()">×</button>
+
+    <hr>
+
+    <main class="px-1 pt-4 pb-0">
+        <form [formGroup]="form" class="row row-cols-2">
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Material" formControlName="material" />
+                    <label class="form__label">Material</label>
+                </div>
+            </div>
+
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Cantidad" formControlName="quantity" />
+                    <label class="form__label">Cantidad</label>
+                </div>
+            </div>
+
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Unidad de medida" formControlName="measure" />
+                    <label class="form__label">Unidad de medida</label>
+                </div>
+            </div>
+
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Cliente" formControlName="client" />
+                    <label class="form__label">Cliente</label>
+                </div>
+            </div>
+
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Ubicación de entrega" formControlName="location" />
+                    <label class="form__label">Ubicación de entrega</label>
+                </div>
+            </div>
+
+            <div class="form__container">
+                <div class="form__group">
+                    <select class="form__input" formControlName="status">
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Enviado">Enviado</option>
+                        <option value="Entregado">Entregado</option>
+                    </select>
+                    <label class="form__label">Estado</label>
+                </div>
+            </div>
+
+            @if (data.mode !== 'detail') {
+                <div class="button w-100">
+                    <button type="submit" (click)="onSubmit()" class="button__control button__control--black px-5">
+                        <span class="small fw-medium">
+                            @if (data.mode === 'create') { Crear }
+                            @else if (data.mode === 'edit') { Guardar }
+                        </span>
+                    </button>
+                </div>
+            }
+        </form>
+    </main>
+</section>

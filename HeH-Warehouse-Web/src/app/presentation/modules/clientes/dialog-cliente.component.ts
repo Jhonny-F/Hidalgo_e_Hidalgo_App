@@ -4,18 +4,22 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { MatFormFieldModule } from '@angular/material/form-field'; // Importa MatFormFieldModule
 import { MatInputModule } from '@angular/material/input'; // Importa MatInputModule
 import { MatButtonModule } from '@angular/material/button'; // Importa MatButtonModule
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-cliente-dialog',
-    templateUrl: './dialog-cliente.component.html',
+    standalone: true,
+    templateUrl: '../clientes/dialog-cliente.component.html', 
     styleUrls: ['./dialog-cliente.component.css'],
     imports: [
-        ReactiveFormsModule, // Importa ReactiveFormsModule para trabajar con formularios reactivos
+        CommonModule,
+        ReactiveFormsModule, //
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        MatDialogModule // También podrías necesitar MatDialogModule aquí
+        MatDialogModule //
     ]
+    
 })
 export class ClienteDialogComponent {
 

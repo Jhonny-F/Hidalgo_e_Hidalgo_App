@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { Subject, debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
-import { DialogSuppliesComponent } from '../dialog-supplies.component';
+import { DialogSuppliesComponent } from '../../insumos/dialog-supplies.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 interface Insumo {
@@ -30,11 +30,11 @@ interface Insumo {
     MatIconModule,
     MatDialogModule,
     MatInputModule,
-    DialogSuppliesComponent,
+    //DialogSuppliesComponent,
     MatPaginatorModule,
   ],
   templateUrl: './supplies-home.component.html',
-  styleUrls: ['./supplies-home.component.css']
+  styleUrls: ['./supplies-home.component.css'],
 })
 export class SuppliesHomeComponent implements OnInit, OnDestroy {
   insumosData: Insumo[] = [

@@ -57,7 +57,7 @@ export const AdminPages: Routes = [
           label: 'Despachos'
         },
         loadComponent: () =>
-          import('../modules/despachos-obras/dispatches-home/dispatches-home.component').then(c => c.DispatchesHomeComponent),
+          import('../modules/despachos-obras/despachos-home/despachos-home.component').then(c => c.DespachosHomeComponent),
       },
       {
         path: 'clientes',

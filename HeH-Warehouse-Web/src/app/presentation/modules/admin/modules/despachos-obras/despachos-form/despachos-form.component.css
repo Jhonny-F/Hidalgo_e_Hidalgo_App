@@ -1,0 +1,70 @@
+.form__container {
+    height: 80px;
+}
+
+.button__control {
+    max-width: 100%;
+}
+
+select {
+    appearance: none;
+}
+
+.form__group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form__input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form__label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 0.9rem;
+    color: #666;
+    transition: all 0.3s ease-in-out;
+}
+
+.form__input:focus + .form__label,
+.form__input:not(:placeholder-shown) + .form__label {
+    top: -15px;
+    font-size: 0.8rem;
+    color: #000;
+}
+
+.form__alerts {
+    color: red;
+    font-size: 0.8rem;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.button__action {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.button__control {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.button__control--black {
+    background-color: black;
+    color: white;
+}

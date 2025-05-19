@@ -6,13 +6,21 @@ import { CredentialsModel } from '@core/models/credentials-model';
   providedIn: 'root'
 })
 export class AuthService {
+  
+  login(credentials: CredentialsModel): Observable<string> {
+    const username = credentials.username ?? '';
+    const password = credentials.password ?? '';
 
-  login(credentials: CredentialsModel): Observable<any> {
-    if (credentials.username === 'jhonny' && credentials.password === 'root@1234') {
-      return of('FLORES GARCIA JHONNY ROBERTH');
+    const validUsers = new Map([
+      ['jhonny', '1234'],
+      ['admin', 'admin123']
+    ]);
+
+    if (validUsers.get(username) === password) {
+      return of(`Bienvenido, ${username}`);
     } else {
       return of('');
     }
   }
-
+  
 }
