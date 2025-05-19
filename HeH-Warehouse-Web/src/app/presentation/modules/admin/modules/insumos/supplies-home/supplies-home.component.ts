@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { Subject, debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
-import { DialogSuppliesComponent } from '../../insumos/dialog-supplies.component';
+import { DialogSuppliesComponent } from '../dialog-supplies.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 interface Insumo {
@@ -34,15 +34,15 @@ interface Insumo {
     MatPaginatorModule,
   ],
   templateUrl: './supplies-home.component.html',
-  styleUrls: ['./supplies-home.component.css'],
+  styleUrls: ['./supplies-home.component.css']
 })
 export class SuppliesHomeComponent implements OnInit, OnDestroy {
   insumosData: Insumo[] = [
-    { id: 1, nombre: 'Bloques De Cemento', valor: 2.50, cantidad: 500, stockMinimo: 100, unidadMedida: 'Unidades', ubicacion: 'Almacén A', imagenUrl: 'assets/img/bloque.png' },
-    { id: 2, nombre: 'Cemento Gris', valor: 8.00, cantidad: 200, stockMinimo: 50, unidadMedida: 'Bultos', ubicacion: 'Almacén B', imagenUrl: 'assets/img/cemento.png' },
-    { id: 3, nombre: 'Varilla De Hierro', valor: 5.50, cantidad: 150, stockMinimo: 30, unidadMedida: 'Barras', ubicacion: 'Almacén C', imagenUrl: 'assets/img/varilla.png' },
-    { id: 4, nombre: 'Arena Gruesa', valor: 12.00, cantidad: 30, stockMinimo: 10, unidadMedida: 'Metros Cúbicos', ubicacion: 'Patio Exterior', imagenUrl: 'assets/img/arena.png' },
-    { id: 5, nombre: 'Piedra Triturada', valor: 15.00, cantidad: 150, stockMinimo: 40, unidadMedida: 'Metros Cúbicos', ubicacion: 'Patio Exterior', imagenUrl: 'assets/img/piedra.png' },
+    { id: 1, nombre: 'Bloques De Cemento', valor: 2.50, cantidad: 500, stockMinimo: 100, unidadMedida: 'Unidades', ubicacion: 'Almacén A', imagenUrl: 'https://cdn-hnhhl.nitrocdn.com/gRUERaSCkjBynvWkHuxpagXXnMhIISxM/assets/images/optimized/rev-751d72b/www.hormiglass.cl/wp-content/uploads/2020/07/Bloques-1.jpg' },
+    { id: 2, nombre: 'Cemento Gris', valor: 8.00, cantidad: 200, stockMinimo: 50, unidadMedida: 'Bultos', ubicacion: 'Almacén B', imagenUrl: 'https://www.construenvio.com/es-us/medias/?context=bWFzdGVyfGltYWdlc3wyNDYzMHxpbWFnZS93ZWJwfGltYWdlcy9oNzUvaDRkLzkyNzMyNzY2MjkwMjIud2VicHxjZmNiNzczNTM5ZDljODI3Zjk5MDhiN2JiN2U0OWQ0NTdjMmNjMDg0ZTdjYjNlZDBmZGNhNjgxMjY0NGQ5YmFk' },
+    { id: 3, nombre: 'Varilla De Hierro', valor: 5.50, cantidad: 150, stockMinimo: 30, unidadMedida: 'Barras', ubicacion: 'Almacén C', imagenUrl: 'https://www.geroneto.com/images/varillas.png' },
+    { id: 4, nombre: 'Arena Gruesa', valor: 12.00, cantidad: 30, stockMinimo: 10, unidadMedida: 'Metros Cúbicos', ubicacion: 'Patio Exterior', imagenUrl: 'https://metalhierro.com/public/imagenes/saco_40_kg_arena_fina_lavada(1).jpg' },
+    { id: 5, nombre: 'Piedra Triturada', valor: 15.00, cantidad: 150, stockMinimo: 40, unidadMedida: 'Metros Cúbicos', ubicacion: 'Patio Exterior', imagenUrl: 'https://revestimientoslapedrera.com.ar/wp-content/uploads/marmol-blanco-1-1.jpg' },
   ];
 
   dataSource = new MatTableDataSource<Insumo>(this.insumosData);
