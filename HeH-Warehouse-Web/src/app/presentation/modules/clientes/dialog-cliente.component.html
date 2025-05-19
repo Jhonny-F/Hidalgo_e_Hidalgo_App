@@ -1,35 +1,40 @@
 <h2 mat-dialog-title>{{ data?.esEdicion ? 'Editar Cliente' : 'Agregar Nuevo Cliente' }}</h2>
 <mat-dialog-content [formGroup]="form">
   <mat-form-field appearance="outline">
-    <mat-label>Nombre</mat-label>
-    <input matInput formControlName="nombre">
-    <mat-error *ngIf="form.get('nombre')?.hasError('required')">Nombre es requerido</mat-error>
-  </mat-form-field>
+  <mat-label>Nombre</mat-label>
+  <input matInput formControlName="fullName">
+  <mat-error *ngIf="form.get('fullName')?.hasError('required')">Nombre es requerido</mat-error>
+</mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Correo</mat-label>
-    <input matInput formControlName="correo">
-    <mat-error *ngIf="form.get('correo')?.hasError('required')">Correo es requerido</mat-error>
-    <mat-error *ngIf="form.get('correo')?.hasError('email')">Correo no es válido</mat-error>
-  </mat-form-field>
+<mat-form-field appearance="outline">
+  <mat-label>Correo</mat-label>
+  <input matInput formControlName="email">
+  <mat-error *ngIf="form.get('email')?.hasError('required')">Correo es requerido</mat-error>
+  <mat-error *ngIf="form.get('email')?.hasError('email')">Correo no es válido</mat-error>
+</mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Teléfono</mat-label>
-    <input matInput formControlName="telefono">
-    <mat-error *ngIf="form.get('telefono')?.hasError('required')">Teléfono es requerido</mat-error>
-  </mat-form-field>
+<mat-form-field appearance="outline">
+  <mat-label>Teléfono</mat-label>
+  <input matInput formControlName="phone">
+  <mat-error *ngIf="form.get('phone')?.hasError('required')">Teléfono es requerido</mat-error>
+</mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Dirección</mat-label>
-    <input matInput formControlName="direccion">
-    <mat-error *ngIf="form.get('direccion')?.hasError('required')">Dirección es requerida</mat-error>
-  </mat-form-field>
+<mat-form-field appearance="outline">
+  <mat-label>Identificación</mat-label>
+  <input matInput formControlName="identification">
+  <mat-error *ngIf="form.get('identification')?.hasError('required')">Identificación es requerida</mat-error>
+</mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Estado</mat-label>
-    <input matInput formControlName="estado">
-    <mat-error *ngIf="form.get('estado')?.hasError('required')">Estado es requerido</mat-error>
-  </mat-form-field>
+<mat-form-field appearance="outline">
+  <mat-label>Turno</mat-label>
+  <mat-select formControlName="shift">
+    <mat-option value="Mañana">Mañana</mat-option>
+    <mat-option value="Tarde">Tarde</mat-option>
+    <mat-option value="Noche">Noche</mat-option>
+  </mat-select>
+  <mat-error *ngIf="form.get('shift')?.hasError('required')">Turno es requerido</mat-error>
+</mat-form-field>
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="cerrar()">Cancelar</button>

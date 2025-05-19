@@ -8,70 +8,73 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-
-export interface Cliente {
-  id: number;
-  nombre: string;
-  correo: string;
-  telefono: string;
-  direccion: string;
-  estado: string;
-}
+import { ClientesService } from '@core/services/clientes.service';
+import { ClientesModel } from '@core/models/clientes-model';
 
 @Component({
-    selector: 'app-clientes',
-    templateUrl: './clientes.component.html',
-    styleUrls: ['./clientes.component.css'],
-    imports: [
-        CommonModule,
-        FormsModule,
-        MatInputModule,
-        MatFormFieldModule,
-        MatTableModule,
-        MatButtonModule,
-        MatIconModule,
-        MatDialogModule,
-        //ClienteDialogComponent
-    ]
+  selector: 'app-clientes',
+  templateUrl: './clientes.component.html',
+  styleUrls: ['./clientes.component.css'],
+  standalone: true,
+  
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule
+  ]
 })
+
 export class ClientesComponent {
-  clientes: Cliente[] = [
-    { id: 1, nombre: 'Juan Pérez', correo: 'juan@gmail.com', telefono: '0991234567', direccion: 'Quito', estado: 'Activo' },
-    { id: 2, nombre: 'María López', correo: 'maria@hotmail.com', telefono: '0987654321', direccion: 'Guayaquil', estado: 'Inactivo' }
-  ];
-
+  clientes: ClientesModel[] = [];
   filtro: string = '';
+  displayedColumns: string[] = ['fullName', 'email', 'phone', 'identification', 'shift', 'acciones']; // ✅ Definir columnas
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private clientesService: ClientesService) {
+    this.cargarClientes();
 
-  get clientesFiltrados(): Cliente[] {
-    return this.clientes.filter(c =>
-      Object.values(c).some(valor =>
+  }
+
+  cargarClientes(): void {
+  this.clientesService.getAll().subscribe((clientes: ClientesModel[]) => {
+    console.log("Clientes cargados:", clientes); // ✅ Verifica si hay datos
+    this.clientes = clientes;
+  });
+  }
+
+
+  get clientesFiltrados(): ClientesModel[] {
+    return this.clientes.filter(c => 
+      Object.values(c).some(valor => 
         valor.toString().toLowerCase().includes(this.filtro.toLowerCase())
       )
     );
   }
 
-  abrirDialogo(cliente?: Cliente): void {
+  abrirDialogo(cliente?: ClientesModel): void {
     const dialogRef = this.dialog.open(ClienteDialogComponent, {
-      width: '400px',
-      data: cliente ? { ...cliente, esEdicion: true } : { esEdicion: false }
+        width: '400px',
+        data: cliente ? { ...cliente, esEdicion: true } : { esEdicion: false }
     });
-  
-    dialogRef.afterClosed().subscribe(resultado => {
-      if (resultado) {
-        if (resultado.esEdicion) { // Verificamos la propiedad esEdicion
-          const index = this.clientes.findIndex(c => c.id === resultado.id);
-          if (index !== -1) this.clientes[index] = resultado;
-        } else {
-          const nuevoId = Math.max(...this.clientes.map(c => c.id), 0) + 1; // Aseguramos que el ID sea al menos 1 si no hay clientes
-          this.clientes.push({ ...resultado, id: nuevoId });
-        }
-      }
-    });
-  }
 
-  eliminarCliente(cliente: Cliente): void {
-    this.clientes = this.clientes.filter(c => c.id !== cliente.id);
-  }
+    dialogRef.afterClosed().subscribe(resultado => {
+        if (resultado) {
+            this.cargarClientes(); // ✅ Solo recargar si hubo un cambio
+        }
+    });
+}
+
+
+  eliminarCliente(cliente: ClientesModel): void {
+    if (cliente.id !== undefined) {
+        this.clientesService.delete(cliente.id).subscribe(() => this.cargarClientes());
+    } else {
+        console.error("Error: Cliente sin ID válido", cliente);
+    }
+}
+
 }
