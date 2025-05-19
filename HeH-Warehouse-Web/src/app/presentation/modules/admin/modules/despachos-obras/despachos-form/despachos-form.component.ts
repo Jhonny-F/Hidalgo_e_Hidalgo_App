@@ -9,9 +9,10 @@ import { DespachosService } from '@core/services/despachos.service';
 import { Observable } from 'rxjs';
 import { ConfirmationComponent } from '@presentation/modules/shared/components/confirmation/confirmation.component';
 import { MaterialsService } from '@core/services/materials.service';
-import { WarehouseService } from '@core/services/warehouse.service';
+import { ClientesService } from '@core/services/clientes.service';
+
 import { MaterialsModel } from '@core/models/materials-model';
-import { WarehouseModel } from '@core/models/warehouse-model';
+import { ClientesModel } from '@core/models/clientes-model';
 import { ChangeDetectorRef } from '@angular/core';
 
 
@@ -31,7 +32,7 @@ export class DespachosFormComponent implements OnInit {
     public form!: FormGroup;
     public isSubmitting = signal(false);
     public materials: MaterialsModel[] = [];
-    public clients: WarehouseModel[] = [];
+    public clients: ClientesModel[] = [];
     public selectedMaterial: string = ''; // ← Definir variable
     public selectedClient: string = ''; // ← Definir variable
 
@@ -41,7 +42,7 @@ export class DespachosFormComponent implements OnInit {
     private _fb: FormBuilder,
     private _toast: ToastService,
     private _materialsService: MaterialsService,
-    private _warehouseService: WarehouseService,
+    private _clientesService: ClientesService,
     private _despachosService: DespachosService,
     private _dialogRef: MatDialogRef<DespachosFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { mode: FormMode, entity?: DespachosModel }
@@ -82,17 +83,15 @@ export class DespachosFormComponent implements OnInit {
     }
 }
 
-onClientChange(event: any): void {
-    const clientId = +event.target.value;
-    const selectedClient = this.clients.find(c => c.id === clientId);
-    if (selectedClient) {
-        this.form.patchValue({
-            client: selectedClient.id // ← Mantener el ID
-        });
-
-        setTimeout(() => this.cdr.detectChanges(), 100); // ← Forzar actualización
+    onClientChange(event: any): void {
+        const clientId = +event.target.value;
+        const selectedClient = this.clients.find(c => c.id === clientId);
+        if (selectedClient) {
+            this.form.patchValue({ client: selectedClient.id });
+            setTimeout(() => this.cdr.detectChanges(), 100);
+        }
     }
-}
+
 
 
 
@@ -103,10 +102,11 @@ onClientChange(event: any): void {
     }
 
     loadClients(): void {
-        this._warehouseService.getAll().subscribe(clients => {
-            this.clients = clients;
-        });
-    }
+    this._clientesService.getAll().subscribe(clients => {
+        this.clients = clients;
+    });
+}
+
 
 
     onSubmit(): void {

@@ -13,6 +13,7 @@ import { ConfirmationComponent } from '@presentation/modules/shared/components/c
 import { ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+import { ClientesService } from '@core/services/clientes.service';
 
 const getSpanishPaginator = (): MatPaginatorIntl => {
     const paginator = new MatPaginatorIntl();
@@ -52,8 +53,10 @@ export class DespachosHomeComponent {
   this.dataSource.data = data.map(despacho => ({
     ...despacho,
     material: despacho.material ? String(despacho.material) : '',
-    client: despacho.client ? String(despacho.client) : ''
+    client: despacho.client ? String(despacho.client) : '' // ✅ Se mantiene consistente con `ClienteModel`
+  
   }));
+
 });
 }
 
