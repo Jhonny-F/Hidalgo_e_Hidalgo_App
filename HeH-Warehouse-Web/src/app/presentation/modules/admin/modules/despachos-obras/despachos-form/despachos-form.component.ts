@@ -33,8 +33,8 @@ export class DespachosFormComponent implements OnInit {
     public isSubmitting = signal(false);
     public materials: MaterialsModel[] = [];
     public clients: ClientesModel[] = [];
-    public selectedMaterial: string = ''; // ← Definir variable
-    public selectedClient: string = ''; // ← Definir variable
+    public selectedMaterial: string = ''; 
+    public selectedClient: string = ''; 
 
     constructor(
     private cdr: ChangeDetectorRef,
@@ -59,7 +59,7 @@ export class DespachosFormComponent implements OnInit {
         this.form.controls['quantity'].updateValueAndValidity();
         this.form.controls['measure'].updateValueAndValidity();
         this.form.controls['location'].updateValueAndValidity();
-        this.cdr.detectChanges(); // ← Forzar actualización de Angular
+        this.cdr.detectChanges(); 
     });
 
     if (this.data.mode === 'edit') {
@@ -73,13 +73,13 @@ export class DespachosFormComponent implements OnInit {
     const selectedMaterial = this.materials.find(m => m.id === materialId);
     if (selectedMaterial) {
         this.form.patchValue({
-            material: selectedMaterial.id, // ← Mantener el ID
+            material: selectedMaterial.id,
             quantity: selectedMaterial.quantity,
             measure: selectedMaterial.measure,
             location: selectedMaterial.location
         });
 
-        setTimeout(() => this.cdr.detectChanges(), 100); // ← Forzar actualización
+        setTimeout(() => this.cdr.detectChanges(), 100); 
     }
 }
 
@@ -179,15 +179,15 @@ export class DespachosFormComponent implements OnInit {
     const selectedClient = this.clients.find(c => c.fullName === data.client);
 
     this.form.patchValue({
-        material: selectedMaterial ? selectedMaterial.id : data.material, // ← Guardar ID correctamente
-        client: selectedClient ? selectedClient.id : data.client, // ← Guardar ID correctamente
+        material: selectedMaterial ? selectedMaterial.id : data.material, // Guardar ID correctamente
+        client: selectedClient ? selectedClient.id : data.client, 
         quantity: data.quantity,
         measure: data.measure,
         location: data.location,
         status: data.status
     });
 
-    this.cdr.detectChanges(); // ← Forzar actualización del formulario
+    this.cdr.detectChanges();
 }
 
 

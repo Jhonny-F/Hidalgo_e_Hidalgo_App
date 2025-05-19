@@ -55,32 +55,32 @@
     .actions-column {
         display: flex;
         justify-content: center;
-        gap: 10px; /* Separación entre botones */
+        gap: 10px;
     }
 }
 
 .mat-mdc-cell {
-    color: #2E2E2E; /* Texto principal */
+    color: #2E2E2E; 
     font-size: .750rem;
     font-weight: 400;
     text-transform: capitalize;
     cursor: pointer;
-    border-bottom: 1px solid #E0E0E0; /* Separadores suaves */
+    border-bottom: 1px solid #E0E0E0; 
 }
 
 .mat-mdc-row:nth-child(even) .mat-mdc-cell {
-    background-color: #FAFAFA; /* Filas alternas */
+    background-color: #FAFAFA; 
 }
 
 .mat-mdc-row:hover .mat-mdc-cell {
-    background-color: #E6F7FF; /* Hover en filas */
+    background-color: #E6F7FF;
 }
 
 mat-paginator {
     width: 100%;
     border-top: none;
     background-color: white;
-    color: #2E2E2E; /* Texto en el paginador */
+    color: #2E2E2E; 
     border: 1px solid #E0E0E0;
     border-top: 0;
 }
@@ -99,8 +99,8 @@ mat-paginator {
     font-size: 2rem;
     font-weight: 600;
     font-family: 'Roboto', sans-serif; /* Usar Roboto */
-    color: #2E2E2E; /* Color de título */
-    border-bottom: 2px solid #E0E0E0; /* Separador debajo */
+    color: #2E2E2E;
+    border-bottom: 2px solid #E0E0E0; 
 }
 
 .page__title--highlight {
@@ -109,15 +109,15 @@ mat-paginator {
 
 /* Estilo de botones */
 .button-add {
-    background-color: #00BFFF; /* Fondo */
-    color: white; /* Texto */
+    background-color: #00BFFF; 
+    color: white; 
     border: none;
     padding: 8px 12px;
     cursor: pointer;
 }
 
 .button-add:hover {
-    background-color: #0099CC; /* Hover */
+    background-color: #0099CC; 
 }
 
 .container__table {
@@ -127,12 +127,7 @@ mat-paginator {
     margin-top: 20px;
     border: 1px solid black;
 }
-/*
-.table__header {
-    min-height: 35px;
-    z-index: 1 !important;
-    background-color: #313131;
-}*/
+
 
 .container__table--title {
     font-size: 12px;
@@ -140,55 +135,3 @@ mat-paginator {
     text-transform: uppercase;
     color: white;
 }
-/*
-.mat-mdc-table {
-    background-color: white;
-}
-    */
-/*
-.mat-mdc-cell {
-    color: #000000;
-    font-size: .750rem;
-    font-weight: 400;
-    text-transform: capitalize;
-    cursor: pointer;
-    border-bottom: 1px solid #e5e2e2;
-}
-
-.mat-mdc-row:hover .mat-mdc-cell {
-    background-color: #f7f7f7;
-}
-*/
-/*
-mat-paginator {
-    width: 100%;
-    border-top: none;
-    background-color: white;
-    color: #000000;
-    border: 1px solid black;
-    border-top: 0;
-}
-    */
-/*
-.mat-header-cell.mat-column-actions .container__table--title {
-    margin: 0 auto;
-}
-
-.icono-titulo {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-}
-*/
-/*
-.page__title {
-    font-size: 2rem;
-    font-weight: 600;
-    font-family: 'Segoe UI', sans-serif;
-    color: #333;
-}
-
-.page__title--highlight {
-    color: #333;
-}
-*/
