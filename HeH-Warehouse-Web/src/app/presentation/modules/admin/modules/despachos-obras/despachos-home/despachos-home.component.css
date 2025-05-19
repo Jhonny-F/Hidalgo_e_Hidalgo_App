@@ -3,45 +3,85 @@
     max-height: 28rem;
     overflow: auto;
     margin-top: 20px;
-    border: 1px solid black;
+    border: 1px solid #E0E0E0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .table__header {
     min-height: 35px;
     z-index: 1 !important;
-    background-color: #313131;
+    background-color: #1E1E1E; /* Color de encabezado */
+    color: white; /* Texto claro */
 }
 
 .container__table--title {
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
-    color: white;
+    color: #1E1E1E; /* Texto principal */
 }
 
 .mat-mdc-table {
-    background-color: white;
+    background-color: white; /* Fondo de la tabla */
+    display: block;
+    overflow-x: auto;
+}
+
+@media (max-width: 430px) {
+    .container__table {
+        width: 100%;
+        max-height: none;
+        padding: 12px;
+        overflow-x: auto;
+        .full-title { display: none; }
+        .short-title { display: inline; }
+    }
+
+    .mat-mdc-cell {
+        font-size: 14px;
+        padding: 10px;
+        white-space: nowrap; 
+    }
+
+    .mat-mdc-row {
+        display: block;
+    }
+}
+
+
+@media (max-width: 430px) {
+    .actions-column {
+        display: flex;
+        justify-content: center;
+        gap: 10px; /* Separación entre botones */
+    }
 }
 
 .mat-mdc-cell {
-    color: #000000;
+    color: #2E2E2E; /* Texto principal */
     font-size: .750rem;
     font-weight: 400;
     text-transform: capitalize;
     cursor: pointer;
-    border-bottom: 1px solid #e5e2e2;
+    border-bottom: 1px solid #E0E0E0; /* Separadores suaves */
+}
+
+.mat-mdc-row:nth-child(even) .mat-mdc-cell {
+    background-color: #FAFAFA; /* Filas alternas */
 }
 
 .mat-mdc-row:hover .mat-mdc-cell {
-    background-color: #f7f7f7;
+    background-color: #E6F7FF; /* Hover en filas */
 }
 
 mat-paginator {
     width: 100%;
     border-top: none;
     background-color: white;
-    color: #000000;
-    border: 1px solid black;
+    color: #2E2E2E; /* Texto en el paginador */
+    border: 1px solid #E0E0E0;
     border-top: 0;
 }
 
@@ -58,6 +98,92 @@ mat-paginator {
 .page__title {
     font-size: 2rem;
     font-weight: 600;
+    font-family: 'Roboto', sans-serif; /* Usar Roboto */
+    color: #2E2E2E; /* Color de título */
+    border-bottom: 2px solid #E0E0E0; /* Separador debajo */
+}
+
+.page__title--highlight {
+    color: #2E2E2E;
+}
+
+/* Estilo de botones */
+.button-add {
+    background-color: #00BFFF; /* Fondo */
+    color: white; /* Texto */
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.button-add:hover {
+    background-color: #0099CC; /* Hover */
+}
+
+.container__table {
+    width: 100%;
+    max-height: 28rem;
+    overflow: auto;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+/*
+.table__header {
+    min-height: 35px;
+    z-index: 1 !important;
+    background-color: #313131;
+}*/
+
+.container__table--title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+}
+/*
+.mat-mdc-table {
+    background-color: white;
+}
+    */
+/*
+.mat-mdc-cell {
+    color: #000000;
+    font-size: .750rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    cursor: pointer;
+    border-bottom: 1px solid #e5e2e2;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+    background-color: #f7f7f7;
+}
+*/
+/*
+mat-paginator {
+    width: 100%;
+    border-top: none;
+    background-color: white;
+    color: #000000;
+    border: 1px solid black;
+    border-top: 0;
+}
+    */
+/*
+.mat-header-cell.mat-column-actions .container__table--title {
+    margin: 0 auto;
+}
+
+.icono-titulo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+*/
+/*
+.page__title {
+    font-size: 2rem;
+    font-weight: 600;
     font-family: 'Segoe UI', sans-serif;
     color: #333;
 }
@@ -65,3 +191,4 @@ mat-paginator {
 .page__title--highlight {
     color: #333;
 }
+*/

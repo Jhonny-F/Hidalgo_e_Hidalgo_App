@@ -1,5 +1,5 @@
 <section class="container-fluid w-100 h-10 p-4">
-    <p class="text-center font-pump-demi h4">
+    <p class="text-center font-roboto h3">
         @switch (data.mode) {
             @case ('create') { Crear }
             @case ('edit') { Editar }
@@ -13,51 +13,71 @@
 
     <main class="px-1 pt-4 pb-0">
         <form [formGroup]="form" class="row row-cols-2">
-            <div class="form__container">
-                <div class="form__group">
-                    <input type="text" class="form__input" placeholder="Material" formControlName="material" />
-                    <label class="form__label">Material</label>
-                </div>
-            </div>
 
             <div class="form__container">
-                <div class="form__group">
-                    <input type="text" class="form__input" placeholder="Cantidad" formControlName="quantity" />
-                    <label class="form__label">Cantidad</label>
-                </div>
+                <label class="form__label-static">Material</label>
+                
+                <select class="form__input" formControlName="material" (change)="onMaterialChange($event)">
+                    <option value="" disabled>Selecciona un material</option>
+                    <option *ngFor="let material of materials" [value]="material.id" [selected]="material.id == form.controls['material'].value">
+                        {{ material.name }}
+                    </option>
+</select>
+
+
+
+
             </div>
 
-            <div class="form__container">
-                <div class="form__group">
-                    <input type="text" class="form__input" placeholder="Unidad de medida" formControlName="measure" />
-                    <label class="form__label">Unidad de medida</label>
-                </div>
-            </div>
 
             <div class="form__container">
-                <div class="form__group">
-                    <input type="text" class="form__input" placeholder="Cliente" formControlName="client" />
-                    <label class="form__label">Cliente</label>
-                </div>
+                <label class="form__label-static">Cantidad</label>
+                <input type="text" class="form__input" formControlName="quantity" [(ngModel)]="form.controls['quantity'].value"/>
             </div>
 
-            <div class="form__container">
-                <div class="form__group">
-                    <input type="text" class="form__input" placeholder="Ubicación de entrega" formControlName="location" />
-                    <label class="form__label">Ubicación de entrega</label>
-                </div>
-            </div>
+
+
 
             <div class="form__container">
-                <div class="form__group">
-                    <select class="form__input" formControlName="status">
-                        <option value="Pendiente">Pendiente</option>
-                        <option value="Enviado">Enviado</option>
-                        <option value="Entregado">Entregado</option>
-                    </select>
-                    <label class="form__label">Estado</label>
-                </div>
+                <label class="form__label-static">Unidad de medida</label>
+                <input type="text" class="form__input" formControlName="measure" [(ngModel)]="form.controls['measure'].value"/>
             </div>
+
+            
+
+            <div class="form__container">
+                <label class="form__label-static">Cliente</label>
+                <select class="form__input" formControlName="client" (change)="onClientChange($event)">
+                    <option value="" disabled>Selecciona un cliente</option>
+                    <option *ngFor="let client of clients" [value]="client.id" [selected]="client.id == form.controls['client'].value">
+                        {{ client.fullName }}
+                    </option>
+                </select>
+
+
+
+            </div>
+
+
+
+            <div class="form__container">
+                <label class="form__label-static">Ubicación de entrega</label>
+                <input type="text" class="form__input" formControlName="location" [(ngModel)]="form.controls['location'].value"/>
+            </div>
+
+
+
+
+            <div class="form__container">
+                <label class="form__label-static">Estado</label>
+                <select class="form__input" formControlName="status">
+                    <option value="" disabled selected>Selecciona un estado</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Enviado">Enviado</option>
+                    <option value="Entregado">Entregado</option>
+                </select>
+            </div>
+
 
             @if (data.mode !== 'detail') {
                 <div class="button w-100">

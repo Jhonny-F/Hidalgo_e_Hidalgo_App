@@ -1,6 +1,13 @@
 .form__container {
-    height: 80px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: flex-start;
 }
+
+
+
 
 .button__control {
     max-width: 100%;
@@ -17,20 +24,32 @@ select {
 
 .form__input {
     width: 100%;
-    padding: 0.5rem;
+    height: 45px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
+    padding-left: 5px;
+}
+
+
+.form__label-static {
+    display: block;
+    font-size: 0.9rem;
+    color: #000;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .form__label {
     position: absolute;
-    top: 10px;
+    top: 50%;
     left: 10px;
+    transform: translateY(-50%);
     font-size: 0.9rem;
     color: #666;
     transition: all 0.3s ease-in-out;
 }
+
 
 .form__input:focus + .form__label,
 .form__input:not(:placeholder-shown) + .form__label {
@@ -38,6 +57,7 @@ select {
     font-size: 0.8rem;
     color: #000;
 }
+
 
 .form__alerts {
     color: red;

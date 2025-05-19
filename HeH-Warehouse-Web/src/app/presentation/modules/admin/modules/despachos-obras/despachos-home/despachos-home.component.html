@@ -34,8 +34,9 @@
                     <mat-header-cell *matHeaderCellDef mat-sort-header>
                         <span class="container__table--title">Material</span>
                     </mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{ element.material }}</mat-cell>
+                    <mat-cell *matCellDef="let element">{{ element.material || '' }}</mat-cell>
                 </ng-container>
+
 
                 <ng-container matColumnDef="quantity">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -55,8 +56,9 @@
                     <mat-header-cell *matHeaderCellDef mat-sort-header>
                         <span class="container__table--title">Cliente</span>
                     </mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{ element.client }}</mat-cell>
+                    <mat-cell *matCellDef="let element">{{ element.client || '' }}</mat-cell>
                 </ng-container>
+
 
                 <ng-container matColumnDef="location">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -91,6 +93,6 @@
                 
             </mat-table>
         </main>
-        <mat-paginator [pageSizeOptions]="[25, 50, 75, 100]"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
     </section>
 </section>

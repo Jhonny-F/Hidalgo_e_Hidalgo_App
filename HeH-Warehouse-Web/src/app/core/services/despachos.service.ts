@@ -46,16 +46,29 @@ export class DespachosService {
     }
 
     create(despacho: DespachosModel): Observable<DespachosModel> {
-    const newId = Math.max(...this.despachosKeepers.map(w => w.id || 0), 0) + 1;
-    const newDespacho = { ...despacho, id: newId };
+    // Verificar si existe un despacho idéntico para evitar duplicación
+    const exists = this.despachosKeepers.some(d => 
+        d.material === despacho.material &&
+        d.client === despacho.client &&
+        d.quantity === despacho.quantity &&
+        d.measure === despacho.measure &&
+        d.location === despacho.location &&
+        d.status === despacho.status
+    );
 
-    if (!this.despachosKeepers.some(d => d.id === newId)) { // Evita duplicados
+    if (!exists) {
+        const newId = Math.max(...this.despachosKeepers.map(w => w.id || 0), 0) + 1;
+        const newDespacho = { ...despacho, id: newId };
+
         this.despachosKeepers.push(newDespacho);
         this.saveToStorage();
-    }
 
-    console.log("Despacho agregado:", newDespacho); // ← Verificación en consola
-    return of(newDespacho);
+        console.log("Despacho agregado correctamente:", newDespacho);
+        return of(newDespacho);
+    } else {
+        console.warn("Intento de duplicación evitado.");
+        return of(despacho); // No guarda si ya existe
+    }
 }
 
     update(updatedDespacho: DespachosModel): Observable<DespachosModel> {

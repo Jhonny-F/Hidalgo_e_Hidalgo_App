@@ -8,6 +8,12 @@ import { DespachosModel } from '@core/models/despachos-model';
 import { DespachosService } from '@core/services/despachos.service';
 import { Observable } from 'rxjs';
 import { ConfirmationComponent } from '@presentation/modules/shared/components/confirmation/confirmation.component';
+import { MaterialsService } from '@core/services/materials.service';
+import { WarehouseService } from '@core/services/warehouse.service';
+import { MaterialsModel } from '@core/models/materials-model';
+import { WarehouseModel } from '@core/models/warehouse-model';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 type FormMode = 'create' | 'edit' | 'detail';
 
@@ -22,13 +28,20 @@ type FormMode = 'create' | 'edit' | 'detail';
 })
 export class DespachosFormComponent implements OnInit {
 
-  public form!: FormGroup;
-  public isSubmitting = signal(false);
+    public form!: FormGroup;
+    public isSubmitting = signal(false);
+    public materials: MaterialsModel[] = [];
+    public clients: WarehouseModel[] = [];
+    public selectedMaterial: string = ''; // ← Definir variable
+    public selectedClient: string = ''; // ← Definir variable
 
-  constructor(
+    constructor(
+    private cdr: ChangeDetectorRef,
     private _dialog: MatDialog,
     private _fb: FormBuilder,
     private _toast: ToastService,
+    private _materialsService: MaterialsService,
+    private _warehouseService: WarehouseService,
     private _despachosService: DespachosService,
     private _dialogRef: MatDialogRef<DespachosFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { mode: FormMode, entity?: DespachosModel }
@@ -36,10 +49,65 @@ export class DespachosFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
+    this.loadMaterials(); 
+    this.loadClients();
+
+    setTimeout(() => {
+        this.form.controls['material'].updateValueAndValidity();
+        this.form.controls['client'].updateValueAndValidity();
+        this.form.controls['quantity'].updateValueAndValidity();
+        this.form.controls['measure'].updateValueAndValidity();
+        this.form.controls['location'].updateValueAndValidity();
+        this.cdr.detectChanges(); // ← Forzar actualización de Angular
+    });
+
     if (this.data.mode === 'edit') {
-      this.setData(this.data.entity!);
+        this.setData(this.data.entity!);
     }
-  }
+}
+
+
+  onMaterialChange(event: any): void {
+    const materialId = +event.target.value;
+    const selectedMaterial = this.materials.find(m => m.id === materialId);
+    if (selectedMaterial) {
+        this.form.patchValue({
+            material: selectedMaterial.id, // ← Mantener el ID
+            quantity: selectedMaterial.quantity,
+            measure: selectedMaterial.measure,
+            location: selectedMaterial.location
+        });
+
+        setTimeout(() => this.cdr.detectChanges(), 100); // ← Forzar actualización
+    }
+}
+
+onClientChange(event: any): void {
+    const clientId = +event.target.value;
+    const selectedClient = this.clients.find(c => c.id === clientId);
+    if (selectedClient) {
+        this.form.patchValue({
+            client: selectedClient.id // ← Mantener el ID
+        });
+
+        setTimeout(() => this.cdr.detectChanges(), 100); // ← Forzar actualización
+    }
+}
+
+
+
+  loadMaterials(): void {
+        this._materialsService.getAll().subscribe(materials => {
+            this.materials = materials;
+        });
+    }
+
+    loadClients(): void {
+        this._warehouseService.getAll().subscribe(clients => {
+            this.clients = clients;
+        });
+    }
+
 
     onSubmit(): void {
     if (this.isSubmitting()) return;
@@ -50,23 +118,46 @@ export class DespachosFormComponent implements OnInit {
         return;
     }
 
-    this.openConfirmationDialog(true).subscribe((confirmed: boolean) => {
-        if (confirmed) {
-            const despachoData: DespachosModel = { ...this.data.entity, ...this.form.value }; // ← Mezcla datos originales y editados
-            const request$: Observable<DespachosModel> = this.data.mode === 'edit'
+    const selectedMaterial = this.materials.find(m => m.id === this.form.value.material);
+    const selectedClient = this.clients.find(c => c.id === this.form.value.client);
+
+    const despachoData: DespachosModel = { 
+        ...this.data.entity, 
+        ...this.form.value,
+        material: selectedMaterial ? selectedMaterial.name : this.form.value.material,
+        client: selectedClient ? selectedClient.fullName : this.form.value.client
+    };
+
+    // **Verificar si ya existe un despacho con los mismos datos**
+    this._despachosService.getAll().subscribe(existingDespachos => {
+        const exists = existingDespachos.some(despacho => 
+            despacho.material === despachoData.material &&
+            despacho.client === despachoData.client &&
+            despacho.quantity === despachoData.quantity &&
+            despacho.measure === despachoData.measure &&
+            despacho.location === despachoData.location &&
+            despacho.status === despachoData.status
+        );
+
+        if (!exists) {
+            const request$ = this.data.mode === 'edit'
                 ? this._despachosService.update(despachoData)
                 : this._despachosService.create(despachoData);
 
             request$.subscribe({
                 next: (updatedDespacho) => {
-                    console.log("Despacho actualizado correctamente:", updatedDespacho);
-                    this._dialogRef.close(updatedDespacho); // ← Enviar el despacho editado correctamente
+                    console.log("Despacho guardado correctamente:", updatedDespacho);
+                    this._dialogRef.close(updatedDespacho);
                 },
                 error: () => this._toast.error('Ha ocurrido un error.')
             });
+        } else {
+            this._toast.error('Este despacho ya existe.');
+            console.warn("Intento de duplicación evitado.");
         }
     });
 }
+
 
   onCancel(): void {
     this._dialogRef.close(false);
@@ -84,8 +175,23 @@ export class DespachosFormComponent implements OnInit {
   }
 
   private setData(data: DespachosModel): void {
-    this.form.patchValue(data);
-  }
+    const selectedMaterial = this.materials.find(m => m.name === data.material);
+    const selectedClient = this.clients.find(c => c.fullName === data.client);
+
+    this.form.patchValue({
+        material: selectedMaterial ? selectedMaterial.id : data.material, // ← Guardar ID correctamente
+        client: selectedClient ? selectedClient.id : data.client, // ← Guardar ID correctamente
+        quantity: data.quantity,
+        measure: data.measure,
+        location: data.location,
+        status: data.status
+    });
+
+    this.cdr.detectChanges(); // ← Forzar actualización del formulario
+}
+
+
+
 
   openConfirmationDialog(data: boolean): Observable<boolean> {
     return this._dialog.open(ConfirmationComponent, {

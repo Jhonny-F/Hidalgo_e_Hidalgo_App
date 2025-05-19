@@ -1,3 +1,5 @@
+
+
 .sidenav {
   background-color: var(--color-black);
   width: 225px;
@@ -148,6 +150,24 @@
 
 .tool__full .mat-toolbar.mat-primary {
   width: 100%;
+}
+
+@media (max-width: 430px) { 
+    .container__table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+        overflow-x: auto; /* Permitir desplazamiento horizontal si es necesario */
+    }
+
+    .page__title {
+        font-size: 1.5rem; /* Reducir tamaño del título en pantallas pequeñas */
+    }
+
+    .mat-mdc-cell {
+        font-size: 12px; /* Ajustar tamaño de texto en la tabla */
+        padding: 4px; /* Reducir el espacio interno */
+    }
 }
 
 .container__view {
