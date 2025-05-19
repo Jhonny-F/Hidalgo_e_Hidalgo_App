@@ -8,6 +8,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { ToastService } from '@core/common/toast.service';
 import { MaterialsModel } from '@core/models/materials-model';
@@ -24,6 +26,8 @@ import { ConfirmationComponent } from '@presentation/modules/shared/components/c
         MatTooltipModule,
         MatPaginatorModule,
         MatProgressBarModule,
+        MatButtonModule,
+        MatIconModule
     ],
     templateUrl: './materials-home.component.html',
     styleUrls: ['./materials-home.component.css']

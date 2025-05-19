@@ -1,27 +1,36 @@
 <div class="d-flex align-items-center mb-4">
-  <img src="https://cdn-icons-png.flaticon.com/512/4646/4646816.png" alt="Icono Materiales" class="icono-titulo" />
+  <img src="https://cdn-icons-png.flaticon.com/512/5234/5234508.png" alt="Icono Materiales" class="icono-titulo ms-4" />
   <h1 class="page__title ms-2 m-0">
-    Gestión de <span class="page__title--highlight">Materiales de Construcción</span>
+    Gestión de Materiales de Construcción
   </h1>
 </div>
+
 <section class="container-fluid w-100 h-10 p-0">
 
     <section class="panel__body p-2 p-md-3">
 
-        <section class="d-flex gap-3">
-            <div class="form__field w-100">
-                <div class="form__input-wrapper">
-                    <i class="form__icon fa-solid fa-magnifying-glass"></i>
-                    <input type="text" class="form__input" placeholder="Buscar (nombre, cantidad, unidad de medida, etc)..."
-                        (keyup)="applyFilter($event)" #input />
-                </div>
-            </div>
-            <div class="button">
-                <button type="submit" class="button__control button__control--black px-5" (click)="openAdd()">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-            </div>
-        </section>
+        <section class="d-flex gap-3 align-items-center">
+  <div class="form__field w-100">
+    <div class="search-wrapper">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Buscar (nombre, cantidad, unidad de medida, etc)..."
+        (keyup)="applyFilter($event)"
+        #input
+      />
+    </div>
+  </div>
+
+  <div>
+    <button mat-raised-button color="primary" class="btn-agregar-materiales" (click)="openAdd()">
+      <mat-icon class="me-2">add</mat-icon>
+      Agregar
+    </button>
+  </div>
+</section>
+
         
         @if (isLoading()) {
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
