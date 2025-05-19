@@ -30,19 +30,19 @@
         <td mat-cell *matCellDef="let insumo">{{ insumo.nombre }}</td>
       </ng-container>
 
+      <ng-container matColumnDef="valor">
+        <th mat-header-cell *matHeaderCellDef>Valor (USD)	</th>
+        <td mat-cell *matCellDef="let insumo">{{ insumo.valor }}</td>
+      </ng-container>
+
       <ng-container matColumnDef="cantidad">
         <th mat-header-cell *matHeaderCellDef>Cantidad</th>
         <td mat-cell *matCellDef="let insumo">{{ insumo.cantidad }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="unidadMedida">
-        <th mat-header-cell *matHeaderCellDef>Unidad de Medida</th>
-        <td mat-cell *matCellDef="let insumo">{{ insumo.unidadMedida }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="ubicacion">
-        <th mat-header-cell *matHeaderCellDef>Ubicación</th>
-        <td mat-cell *matCellDef="let insumo">{{ insumo.ubicacion }}</td>
+      <ng-container matColumnDef="stockMinimo">
+        <th mat-header-cell *matHeaderCellDef>Stock Mínimo</th>
+        <td mat-cell *matCellDef="let insumo">{{ insumo.stockMinimo }}</td>
       </ng-container>
 
       <ng-container matColumnDef="acciones">

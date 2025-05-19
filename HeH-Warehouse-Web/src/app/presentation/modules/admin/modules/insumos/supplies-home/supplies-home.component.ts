@@ -15,8 +15,6 @@ interface Insumo {
   valor: number;
   cantidad: number;
   stockMinimo: number;
-  unidadMedida?: string;
-  ubicacion?: string;
   imagenUrl?: string;
 }
 
@@ -38,15 +36,15 @@ interface Insumo {
 })
 export class SuppliesHomeComponent implements OnInit, OnDestroy {
   insumosData: Insumo[] = [
-    { id: 1, nombre: 'Bloques De Cemento', valor: 2.50, cantidad: 500, stockMinimo: 100, unidadMedida: 'Unidades', ubicacion: 'Almacén A', imagenUrl: 'https://cdn-hnhhl.nitrocdn.com/gRUERaSCkjBynvWkHuxpagXXnMhIISxM/assets/images/optimized/rev-751d72b/www.hormiglass.cl/wp-content/uploads/2020/07/Bloques-1.jpg' },
-    { id: 2, nombre: 'Cemento Gris', valor: 8.00, cantidad: 200, stockMinimo: 50, unidadMedida: 'Bultos', ubicacion: 'Almacén B', imagenUrl: 'https://www.construenvio.com/es-us/medias/?context=bWFzdGVyfGltYWdlc3wyNDYzMHxpbWFnZS93ZWJwfGltYWdlcy9oNzUvaDRkLzkyNzMyNzY2MjkwMjIud2VicHxjZmNiNzczNTM5ZDljODI3Zjk5MDhiN2JiN2U0OWQ0NTdjMmNjMDg0ZTdjYjNlZDBmZGNhNjgxMjY0NGQ5YmFk' },
-    { id: 3, nombre: 'Varilla De Hierro', valor: 5.50, cantidad: 150, stockMinimo: 30, unidadMedida: 'Barras', ubicacion: 'Almacén C', imagenUrl: 'https://www.geroneto.com/images/varillas.png' },
-    { id: 4, nombre: 'Arena Gruesa', valor: 12.00, cantidad: 30, stockMinimo: 10, unidadMedida: 'Metros Cúbicos', ubicacion: 'Patio Exterior', imagenUrl: 'https://metalhierro.com/public/imagenes/saco_40_kg_arena_fina_lavada(1).jpg' },
-    { id: 5, nombre: 'Piedra Triturada', valor: 15.00, cantidad: 150, stockMinimo: 40, unidadMedida: 'Metros Cúbicos', ubicacion: 'Patio Exterior', imagenUrl: 'https://revestimientoslapedrera.com.ar/wp-content/uploads/marmol-blanco-1-1.jpg' },
+    { id: 1, nombre: 'Tornillos hexagonal', valor: 0.15, cantidad: 1200, stockMinimo: 500, imagenUrl: 'https://caterpillar.scene7.com/is/image/Caterpillar/CM20210621-8e238-a88bd' },
+    { id: 2, nombre: 'Cable eléctrico 2.5mm', valor: 1.20, cantidad: 150, stockMinimo: 50, imagenUrl: 'https://th.bing.com/th/id/R.00650bbd8d025780c0a01cc35a9d576f?rik=Ar5v%2bApH%2f5%2b0cg&riu=http%3a%2f%2fwww.ledycia.com%2falmacen%2farticulos%2fzoom_cable-electrico-25-mm-varios-colores.jpg&ehk=fqRHn8uzzy0WWlHb6N256cmYVLS4XipPL9XnXliB%2fgQ%3d&risl=&pid=ImgRaw&r=0' },
+    { id: 3, nombre: 'Malla electrosoldada', valor: 3.50, cantidad: 80, stockMinimo: 30, imagenUrl: 'https://th.bing.com/th/id/OIP.ikJ5oAg0D8NX9qONd7fV2wHaHa?rs=1&pid=ImgDetMain' },
+    { id: 4, nombre: 'Lija al agua #120', valor: 0.80, cantidad: 200, stockMinimo: 100, imagenUrl: 'https://www.pronor.com.ar/images/3M-532731604598834138.jpg' },
+    { id: 5, nombre: 'Clavos para drywall', valor: 0.10, cantidad: 2500, stockMinimo: 1000, imagenUrl: 'https://th.bing.com/th/id/OIP.WJMQQBUtk_vDIepMIm3agwHaHa?rs=1&pid=ImgDetMain' },
   ];
 
   dataSource = new MatTableDataSource<Insumo>(this.insumosData);
-  displayedColumns: string[] = ['imagen', 'nombre', 'cantidad', 'unidadMedida', 'ubicacion', 'acciones'];
+  displayedColumns: string[] = ['imagen', 'nombre', 'valor', 'cantidad', 'stockMinimo', 'acciones'];
   searchInputChange = new Subject<string>();
   searchSubscription: Subscription | undefined;
 
