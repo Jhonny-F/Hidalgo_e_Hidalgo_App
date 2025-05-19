@@ -32,7 +32,7 @@ import { ClientesModel } from '@core/models/clientes-model';
 export class ClientesComponent {
   clientes: ClientesModel[] = [];
   filtro: string = '';
-  displayedColumns: string[] = ['fullName', 'email', 'phone', 'identification', 'shift', 'acciones']; // ✅ Definir columnas
+  displayedColumns: string[] = ['fullName', 'email', 'phone', 'identification', 'shift', 'acciones'];
 
   constructor(private dialog: MatDialog, private clientesService: ClientesService) {
     this.cargarClientes();
@@ -41,7 +41,7 @@ export class ClientesComponent {
 
   cargarClientes(): void {
   this.clientesService.getAll().subscribe((clientes: ClientesModel[]) => {
-    console.log("Clientes cargados:", clientes); // ✅ Verifica si hay datos
+    console.log("Clientes cargados:", clientes); 
     this.clientes = clientes;
   });
   }
@@ -63,7 +63,7 @@ export class ClientesComponent {
 
     dialogRef.afterClosed().subscribe(resultado => {
         if (resultado) {
-            this.cargarClientes(); // ✅ Solo recargar si hubo un cambio
+            this.cargarClientes(); 
         }
     });
 }

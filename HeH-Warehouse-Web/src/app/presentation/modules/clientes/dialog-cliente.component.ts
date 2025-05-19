@@ -50,8 +50,8 @@ export class ClienteDialogComponent {
 
   guardar(): void {
     if (this.form.valid) {
-        const esEdicion = this.esEdicion; // ✅ Mantener esEdicion separado
-        const clientesData: ClientesModel = { ...this.form.value, id: this.data?.id || 0 }; // ✅ Solo incluir propiedades de ClientesModel
+        const esEdicion = this.esEdicion; 
+        const clientesData: ClientesModel = { ...this.form.value, id: this.data?.id || 0 };
 
         if (esEdicion) {
             this.clientesService.update(clientesData).subscribe(() => this.dialogRef.close(true));
