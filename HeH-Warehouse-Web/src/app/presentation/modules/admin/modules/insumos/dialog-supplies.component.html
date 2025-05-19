@@ -1,37 +1,28 @@
-<h2 mat-dialog-title>{{ data?.esEdicion ? 'Editar Cliente' : 'Agregar Nuevo Cliente' }}</h2>
-<mat-dialog-content [formGroup]="form">
-  <mat-form-field appearance="outline">
+<h1 mat-dialog-title>
+  {{ data.esEdicion ? 'Editar Insumo' : 'Registrar Insumo' }}
+</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" class="full-width">
     <mat-label>Nombre</mat-label>
-    <input matInput formControlName="nombre">
-    <mat-error *ngIf="form.get('nombre')?.hasError('required')">Nombre es requerido</mat-error>
+    <input matInput [(ngModel)]="nombre" />
   </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Correo</mat-label>
-    <input matInput formControlName="correo">
-    <mat-error *ngIf="form.get('correo')?.hasError('required')">Correo es requerido</mat-error>
-    <mat-error *ngIf="form.get('correo')?.hasError('email')">Correo no es válido</mat-error>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Valor</mat-label>
+    <input matInput type="number" [(ngModel)]="valor" />
   </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Teléfono</mat-label>
-    <input matInput formControlName="telefono">
-    <mat-error *ngIf="form.get('telefono')?.hasError('required')">Teléfono es requerido</mat-error>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Cantidad</mat-label>
+    <input matInput type="number" [(ngModel)]="cantidad" />
   </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Dirección</mat-label>
-    <input matInput formControlName="direccion">
-    <mat-error *ngIf="form.get('direccion')?.hasError('required')">Dirección es requerida</mat-error>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Stock Mínimo</mat-label>
+    <input matInput type="number" [(ngModel)]="stockMinimo" />
   </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Estado</mat-label>
-    <input matInput formControlName="estado">
-    <mat-error *ngIf="form.get('estado')?.hasError('required')">Estado es requerido</mat-error>
-  </mat-form-field>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button (click)="cerrar()">Cancelar</button>
-  <button mat-raised-button color="primary" (click)="guardar()" [disabled]="form.invalid">Guardar</button>
-</mat-dialog-actions>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button color="primary" (click)="guardarInsumo()">Guardar</button>
+</div>

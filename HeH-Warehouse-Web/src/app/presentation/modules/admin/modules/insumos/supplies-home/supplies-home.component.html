@@ -1,1 +1,66 @@
-<p>supplies-home works!</p>
+<div class="gestion-materiales">
+  <div class="header">
+    <img src="assets/img/wheelbarrow.png" alt="Carretilla" class="icon">
+    <h2>Gestión de Materiales de Construcción</h2>
+  </div>
+
+  <div class="search-add">
+    <mat-form-field class="search-input">
+      <mat-label>Buscar (nombre, cantidad, unidad de medida...)</mat-label>
+      <input matInput (input)="onSearchInput($event)" id="searchInput">
+    </mat-form-field>
+    <button mat-fab color="primary" (click)="registrarInsumo()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="imagen">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let insumo">
+          <img [src]="insumo.imagenUrl" alt="{{ insumo.nombre }}" width="30" height="30" *ngIf="insumo.imagenUrl">
+          <span *ngIf="!insumo.imagenUrl">Sin imagen</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let insumo">{{ insumo.nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+        <td mat-cell *matCellDef="let insumo">{{ insumo.cantidad }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="unidadMedida">
+        <th mat-header-cell *matHeaderCellDef>Unidad de Medida</th>
+        <td mat-cell *matCellDef="let insumo">{{ insumo.unidadMedida }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ubicacion">
+        <th mat-header-cell *matHeaderCellDef>Ubicación</th>
+        <td mat-cell *matCellDef="let insumo">{{ insumo.ubicacion }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef class="actions-header">Acciones</th>
+        <td mat-cell *matCellDef="let insumo">
+          <button mat-icon-button color="primary" (click)="registrarInsumo(insumo)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="eliminarInsumo(insumo)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Selecciona la página de los insumos"></mat-paginator>
+  </div>
+</div>

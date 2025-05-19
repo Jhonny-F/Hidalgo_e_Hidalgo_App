@@ -1,50 +1,66 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field'; // Importa MatFormFieldModule
-import { MatInputModule } from '@angular/material/input'; // Importa MatInputModule
-import { MatButtonModule } from '@angular/material/button'; // Importa MatButtonModule
+// dialog-cliente.component.ts
+import { Component, Inject }               from '@angular/core';
+import { CommonModule }                    from '@angular/common';
+import { FormsModule }                     from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA }   from '@angular/material/dialog';
+import { MatFormFieldModule }              from '@angular/material/form-field';
+import { MatInputModule }                  from '@angular/material/input';
+import { MatButtonModule }                 from '@angular/material/button';
+
+export interface DialogData {
+  esEdicion: boolean;
+  id?: number;
+  nombre?: string;
+  valor?: number;
+  cantidad?: number;
+  stockMinimo?: number;
+}
 
 @Component({
-    selector: 'app-cliente-dialog',
-    templateUrl: './dialog-cliente.component.html',
-    styleUrls: ['./dialog-cliente.component.css'],
-    imports: [
-        ReactiveFormsModule, // Importa ReactiveFormsModule para trabajar con formularios reactivos
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatDialogModule // También podrías necesitar MatDialogModule aquí
-    ]
+  selector: 'app-dialog-supplies',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
+  ],
+  templateUrl: './dialog-supplies.component.html',
+  styleUrls: ['./dialog-supplies.component.css'],
 })
-export class ClienteDialogComponent {
+export class DialogSuppliesComponent {
 
-  form: FormGroup;
-  esEdicion: boolean = false;
+  // Propiedades enlazadas con ngModel
+  nombre: string;
+  valor: number;
+  cantidad: number;
+  stockMinimo: number;
 
   constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<ClienteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    private dialogRef: MatDialogRef<DialogSuppliesComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
-    this.esEdicion = this.data?.esEdicion || false;
-
-    this.form = this.fb.group({
-      nombre: [this.data?.nombre || '', Validators.required],
-      correo: [this.data?.correo || '', [Validators.required, Validators.email]],
-      telefono: [this.data?.telefono || '', Validators.required],
-      direccion: [this.data?.direccion || '', Validators.required],
-      estado: [this.data?.estado || 'Activo', Validators.required],
-    });
+    // Inicializa campos, bien para edición o para un nuevo registro
+    this.nombre      = data.nombre      || '';
+    this.valor       = data.valor       || 0;
+    this.cantidad    = data.cantidad    || 0;
+    this.stockMinimo = data.stockMinimo || 0;
   }
 
-  guardar() {
-    if (this.form.valid) {
-      this.dialogRef.close({ ...this.data, ...this.form.value, esEdicion: this.esEdicion });
-    }
-  }
-
-  cerrar() {
+  onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  guardarInsumo(): void {
+    // Cierra el diálogo pasando los datos de vuelta
+    this.dialogRef.close({
+      esEdicion: this.data.esEdicion,
+      id:        this.data.id,
+      nombre:      this.nombre,
+      valor:       this.valor,
+      cantidad:    this.cantidad,
+      stockMinimo: this.stockMinimo
+    });
   }
 }

@@ -1,0 +1,158 @@
+.gestion-materiales {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #f8f9fa; /* Fondo gris muy claro */
+  padding: 15px 20px;
+  border-radius: 5px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.header h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.search-add {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.search-input {
+  flex-grow: 1;
+}
+
+.search-input .mat-form-field-wrapper {
+  padding-bottom: 0; /* Reduce el padding inferior del input */
+}
+
+.search-input .mat-form-field-infix {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.search-input .mat-label {
+  color: rgba(0, 0, 0, 0.6); /* Color del label */
+}
+
+.search-input input {
+  font-size: 1em;
+}
+
+.add-button {
+  position: relative;
+}
+
+.add-button button {
+  background-color: #e0f2f7; /* Fondo azul muy claro */
+  color: #00acc1; /* Color azul acento */
+  border-radius: 5px;
+  padding: 10px 15px;
+  min-width: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-button button .mat-icon {
+  margin-right: 5px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.mat-table {
+  width: 100%;
+  border-collapse: collapse; /* Elimina el espacio entre las celdas */
+  border-radius: 5px;
+  overflow: hidden; /* Asegura que el borde redondeado se aplique */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mat-header-row {
+  background-color: #e9ecef; /* Fondo gris claro para los encabezados */
+  color: #495057; /* Color de texto oscuro */
+}
+
+.mat-header-cell {
+  padding: 12px 16px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.mat-row {
+  background-color: white;
+  display: flex; /* Hacemos la fila un contenedor flex */
+  align-items: center; /* Alineamos verticalmente los items dentro de la fila */
+}
+
+.mat-cell {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0; /* Línea divisoria sutil */
+  font-size: 0.9em;
+  vertical-align: middle; /* Aseguramos que las celdas estén centradas verticalmente */
+}
+
+.mat-cell:first-child {
+  padding-left: 24px; /* Espacio adicional a la izquierda para la imagen */
+}
+
+.mat-cell:last-child {
+  padding-right: 24px; /* Espacio adicional a la derecha para las acciones */
+}
+
+.actions-cell {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end; /* Alinear los botones a la derecha */
+  align-items: center; /* Centrar verticalmente los botones */
+  height: 100%; /* Asegurar que ocupe toda la altura de la celda */
+}
+
+.actions-cell button {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  outline: none;
+  display: flex; /* Para centrar el icono dentro del botón */
+  align-items: center;
+  justify-content: center; /* Centramos el icono horizontalmente también */
+  height: 30px; /* Damos una altura fija a los botones */
+}
+
+.actions-cell button .mat-icon {
+  font-size: 1.1em;
+}
+
+.mat-paginator {
+  background-color: #f8f9fa; /* Fondo gris muy claro para el paginador */
+  padding: 15px 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  justify-content: flex-end; /* Alinear los controles a la derecha */
+  align-items: center;
+  gap: 15px;
+}
+
+.mat-paginator-page-size {
+  margin-right: auto; /* Empuja el selector de tamaño de página a la izquierda */
+}
+
+.mat-paginator-range-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
