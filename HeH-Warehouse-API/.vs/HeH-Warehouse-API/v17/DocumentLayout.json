@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{806D2A2F-2819-47EE-99DF-24073A320A1E}|Domain\\Domain.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\domain\\models\\machinery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{806D2A2F-2819-47EE-99DF-24073A320A1E}|Domain\\Domain.csproj|solutionrelative:domain\\models\\machinery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{806D2A2F-2819-47EE-99DF-24073A320A1E}|Domain\\Domain.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\domain\\models\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{806D2A2F-2819-47EE-99DF-24073A320A1E}|Domain\\Domain.csproj|solutionrelative:domain\\models\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC4F946E-5042-4DE9-9B1F-88DD7BAD83B1}|Presentation\\Presentation.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BC4F946E-5042-4DE9-9B1F-88DD7BAD83B1}|Presentation\\Presentation.csproj|solutionrelative:presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14F4226C-6946-47BD-B672-CA6EE8700D20}|Infrastructure\\Infrastructure.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\infrastructure\\dependencyinjection\\infrastructureservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14F4226C-6946-47BD-B672-CA6EE8700D20}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\dependencyinjection\\infrastructureservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 260,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Machinery.cs",
+              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Domain\\Models\\Machinery.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Machinery.cs",
+              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Domain\\Models\\Machinery.cs",
+              "RelativeToolTip": "Domain\\Models\\Machinery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T02:38:44.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Warehouse.cs",
+              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Domain\\Models\\Warehouse.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Warehouse.cs",
+              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Domain\\Models\\Warehouse.cs",
+              "RelativeToolTip": "Domain\\Models\\Warehouse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T02:36:12.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Presentation\\appsettings.json",
+              "RelativeDocumentMoniker": "Presentation\\appsettings.json",
+              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Presentation\\appsettings.json",
+              "RelativeToolTip": "Presentation\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-08T02:33:46.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InfrastructureServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Infrastructure\\DependencyInjection\\InfrastructureServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\DependencyInjection\\InfrastructureServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Infrastructure\\DependencyInjection\\InfrastructureServiceCollectionExtensions.cs",
+              "RelativeToolTip": "Infrastructure\\DependencyInjection\\InfrastructureServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T02:25:08.335Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
