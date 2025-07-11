@@ -1,11 +1,15 @@
 C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\bin\Debug\net8.0\Domain.deps.json
 C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\bin\Debug\net8.0\Domain.dll
 C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\bin\Debug\net8.0\Shared.dll
+C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\bin\Debug\net8.0\Shared.pdb
+C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
 C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
 C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
 C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
 C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\obj\Debug\net8.0\Domain.csproj.Up2Date
 C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\obj\Debug\net8.0\Domain.dll
 C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\VILLAMAR\Desktop\Hidalgo_e_Hidalgo_App\HeH-Warehouse-API\Domain\obj\Debug\net8.0\Domain.pdb

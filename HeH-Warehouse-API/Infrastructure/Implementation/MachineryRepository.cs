@@ -14,19 +14,19 @@ namespace Infrastructure.Implementation
 
         public MachineryRepository(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("conexion")!;
+            _connectionString = configuration.GetConnectionString("DefaultConnection")!;
         }
 
         public async Task<ApiResult> AddAsync(Machinery entity)
         {
-            entity.Transaccion = "MACHINERY_ADD";
-            return await ExecuteNonQueryAsync(entity, NameStoreProcedure.SET_FLORES_SP, "Maquinaria registrada exitosamente.");
+            entity.Transaccion = "INSERTAR";
+            return await ExecuteNonQueryAsync(entity, "Maquinaria registrada exitosamente.");
         }
 
         public async Task<ApiResult> UpdateAsync(Machinery entity)
         {
-            entity.Transaccion = "MACHINERY_UPDATE";
-            return await ExecuteNonQueryAsync(entity, NameStoreProcedure.SET_FLORES_SP, "Maquinaria actualizada correctamente.");
+            entity.Transaccion = "ACTUALIZAR";
+            return await ExecuteNonQueryAsync(entity, "Maquinaria actualizada correctamente.");
         }
 
         public async Task<ApiResult> DeleteAsync(int id)
@@ -34,10 +34,10 @@ namespace Infrastructure.Implementation
             var entity = new Machinery
             {
                 Id = id,
-                Transaccion = "MACHINERY_DELETE"
+                Transaccion = "ELIMINAR"
             };
 
-            return await ExecuteNonQueryAsync(entity, NameStoreProcedure.GET_FLORES_SP, "Maquinaria eliminada exitosamente.");
+            return await ExecuteNonQueryAsync(entity, "Maquinaria eliminada exitosamente.");
         }
 
         public async Task<ApiResult<Machinery?>> GetByIdAsync(int id)
@@ -45,13 +45,18 @@ namespace Infrastructure.Implementation
             var entity = new Machinery
             {
                 Id = id,
-                Transaccion = "MACHINERY_GET_BY_ID"
+                Transaccion = "CONSULTAR_POR_ID"
             };
 
             try
             {
                 var xml = DBXmlMethods.GetXml(entity)!;
-                var result = await DBXmlMethods.EjecutaBase(NameStoreProcedure.GET_FLORES_SP, _connectionString, entity.Transaccion, xml.ToString());
+                var result = await DBXmlMethods.EjecutaBase(
+                    NameStoreProcedure.SOLANO_SP, 
+                    _connectionString, 
+                    entity.Transaccion, 
+                    xml.ToString()
+                );
 
                 if (result.Tables.Count > 0 && result.Tables[0].Rows.Count > 0)
                 {
@@ -69,12 +74,17 @@ namespace Infrastructure.Implementation
 
         public async Task<ApiResult<IEnumerable<Machinery>>> GetAllAsync()
         {
-            var entity = new Machinery { Transaccion = "MACHINERY_GET_ALL" };
+            var entity = new Machinery { Transaccion = "CONSULTAR_TODO" };
 
             try
             {
                 var xml = DBXmlMethods.GetXml(entity)!;
-                var result = await DBXmlMethods.EjecutaBase(NameStoreProcedure.GET_FLORES_SP, _connectionString, entity.Transaccion, xml.ToString());
+                var result = await DBXmlMethods.EjecutaBase(
+                    NameStoreProcedure.SOLANO_SP, 
+                    _connectionString, 
+                    entity.Transaccion, 
+                    xml.ToString()
+                );
 
                 var list = new List<Machinery>();
 
@@ -94,12 +104,17 @@ namespace Infrastructure.Implementation
             }
         }
 
-        private async Task<ApiResult> ExecuteNonQueryAsync(Machinery entity, string storedProcedure, string mensajeExito)
+        private async Task<ApiResult> ExecuteNonQueryAsync(Machinery entity, string mensajeExito)
         {
             try
             {
                 var xml = DBXmlMethods.GetXml(entity)!;
-                await DBXmlMethods.EjecutaBase(storedProcedure, _connectionString, entity.Transaccion!, xml.ToString());
+                await DBXmlMethods.EjecutaBase(
+                    NameStoreProcedure.SOLANO_SP, 
+                    _connectionString, 
+                    entity.Transaccion!, 
+                    xml.ToString()
+                );
                 return new ApiResult(200, mensajeExito);
             }
             catch (Exception ex)

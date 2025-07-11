@@ -2,7 +2,7 @@
 {
     public class NameStoreProcedure
     {
-        public const string GET_FLORES_SP = "";
-        public const string SET_FLORES_SP = "";
+        public const string FLORES_SP = "SP_WAREHOUSE_FLORES";
+        public const string SOLANO_SP = "SP_MACHINERY_LOSANO";
     }
 }

@@ -1,4 +1,5 @@
-﻿using Presentation.ModelResponse;
+﻿
+using Presentation.ModelResponse;
 
 namespace Domain.Repositories
 {

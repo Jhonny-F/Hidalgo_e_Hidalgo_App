@@ -2,8 +2,8 @@
 using Domain.Models;
 using Domain.Repositories;
 using Infrastructure.Shared;
-using Microsoft.Extensions.Configuration;
 using Presentation.ModelResponse;
+using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Implementation
 {
@@ -13,19 +13,25 @@ namespace Infrastructure.Implementation
 
         public WarehouseRepository(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("conexion")!;
+            _connectionString = configuration.GetConnectionString("DefaultConnection")!;
         }
 
         public async Task<ApiResult> AddAsync(Warehouse entity)
         {
-            entity.Transaccion = "WAREHOUSE_ADD";
-            return await ExecuteNonQueryAsync(entity, NameStoreProcedure.SET_FLORES_SP, "Encargado de almacén registrado exitosamente.");
+            entity.Transaccion = "INSERTAR";
+            return await ExecuteNonQueryAsync(
+                entity, 
+                "Encargado de almacén registrado exitosamente."
+            );
         }
 
         public async Task<ApiResult> UpdateAsync(Warehouse entity)
         {
-            entity.Transaccion = "WAREHOUSE_UPDATE";
-            return await ExecuteNonQueryAsync(entity, NameStoreProcedure.SET_FLORES_SP, "Encargado de almacén actualizado correctamente.");
+            entity.Transaccion = "ACTUALIZAR";
+            return await ExecuteNonQueryAsync(
+                entity, 
+                "Encargado de almacén actualizado correctamente."
+            );
         }
 
         public async Task<ApiResult> DeleteAsync(int id)
@@ -33,10 +39,13 @@ namespace Infrastructure.Implementation
             var entity = new Warehouse
             {
                 Id = id,
-                Transaccion = "WAREHOUSE_DELETE"
+                Transaccion = "ELIMINAR"
             };
 
-            return await ExecuteNonQueryAsync(entity, NameStoreProcedure.GET_FLORES_SP, "Encargado de almacén eliminado exitosamente.");
+            return await ExecuteNonQueryAsync(
+                entity, 
+                "Encargado de almacén eliminado exitosamente."
+            );
         }
 
         public async Task<ApiResult<Warehouse?>> GetByIdAsync(int id)
@@ -44,13 +53,18 @@ namespace Infrastructure.Implementation
             var entity = new Warehouse
             {
                 Id = id,
-                Transaccion = "WAREHOUSE_GET_BY_ID"
+                Transaccion = "CONSULTAR_POR_ID"
             };
 
             try
             {
                 var xml = DBXmlMethods.GetXml(entity)!;
-                var result = await DBXmlMethods.EjecutaBase(NameStoreProcedure.GET_FLORES_SP, _connectionString, entity.Transaccion, xml.ToString());
+                var result = await DBXmlMethods.EjecutaBase(
+                    NameStoreProcedure.FLORES_SP, 
+                    _connectionString, 
+                    entity.Transaccion, 
+                    xml.ToString()
+                );
 
                 if (result.Tables.Count > 0 && result.Tables[0].Rows.Count > 0)
                 {
@@ -68,12 +82,17 @@ namespace Infrastructure.Implementation
 
         public async Task<ApiResult<IEnumerable<Warehouse>>> GetAllAsync()
         {
-            var entity = new Warehouse { Transaccion = "WAREHOUSE_GET_ALL" };
+            var entity = new Warehouse { Transaccion = "CONSULTAR_TODO" };
 
             try
             {
                 var xml = DBXmlMethods.GetXml(entity)!;
-                var result = await DBXmlMethods.EjecutaBase(NameStoreProcedure.GET_FLORES_SP, _connectionString, entity.Transaccion, xml.ToString());
+                var result = await DBXmlMethods.EjecutaBase(
+                    NameStoreProcedure.FLORES_SP, 
+                    _connectionString, 
+                    entity.Transaccion, 
+                    xml.ToString()
+                );
 
                 var list = new List<Warehouse>();
 
@@ -89,16 +108,21 @@ namespace Infrastructure.Implementation
             }
             catch (Exception ex)
             {
-                return new ApiResult<IEnumerable<Warehouse>>(500, Enumerable.Empty<Warehouse>(), $"Ocurrió un error: {ex.Message}");
+                return new ApiResult<IEnumerable<Warehouse>>(500, [], $"Ocurrió un error: {ex.Message}");
             }
         }
 
-        private async Task<ApiResult> ExecuteNonQueryAsync(Warehouse entity, string storedProcedure, string mensajeExito)
+        private async Task<ApiResult> ExecuteNonQueryAsync(Warehouse entity, string mensajeExito)
         {
             try
             {
                 var xml = DBXmlMethods.GetXml(entity)!;
-                await DBXmlMethods.EjecutaBase(storedProcedure, _connectionString, entity.Transaccion!, xml.ToString());
+                await DBXmlMethods.EjecutaBase(
+                    NameStoreProcedure.FLORES_SP, 
+                    _connectionString, 
+                    entity.Transaccion!, 
+                    xml.ToString()
+                );
                 return new ApiResult(200, mensajeExito);
             }
             catch (Exception ex)
