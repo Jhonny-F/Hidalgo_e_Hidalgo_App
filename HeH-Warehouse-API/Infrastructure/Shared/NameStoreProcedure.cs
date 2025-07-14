@@ -3,6 +3,6 @@
     public class NameStoreProcedure
     {
         public const string FLORES_SP = "SP_WAREHOUSE_FLORES";
-        public const string SOLANO_SP = "SP_MACHINERY_LOSANO";
+        public const string SOLANO_SP = "SP_MACHINERY_SOLANO";
     }
 }

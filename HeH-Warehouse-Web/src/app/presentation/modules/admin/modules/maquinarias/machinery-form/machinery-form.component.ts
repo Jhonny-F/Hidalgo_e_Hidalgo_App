@@ -81,7 +81,7 @@ export class MachineryFormComponent implements OnInit {
 
   private initializeForm(): void {
     this.form = this._fb.group({
-      id: [''],
+      id: [0],
       name: ['', Validators.required],
       type: ['', Validators.required],
       brand: ['', Validators.required],

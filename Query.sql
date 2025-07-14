@@ -20,11 +20,10 @@ CREATE TABLE Machinery (
 	brand				VARCHAR(250)		NULL,
 	model				VARCHAR(250)		NULL,
 	originCountry		VARCHAR(250)		NULL,
-	imageUrl			VARCHAR(500)		NULL,
+	imageUrl			VARCHAR(5000)		NULL,
 	estado				INT					NULL		DEFAULT 1,
 	fechaReg			DATE				NULL		DEFAULT CAST(GETDATE() AS DATE)
 );
-
 
 GO
 SET ANSI_NULLS ON
@@ -106,6 +105,112 @@ BEGIN
         ELSE IF @iTransaccion = 'CONSULTAR_POR_ID'
         BEGIN
             SELECT * FROM Warehouse WHERE Id = @id
+
+            SET @respuesta = 'OK'
+            SET @leyenda = 'Consulta exitosa'
+        END
+
+        ELSE
+        BEGIN
+            SET @respuesta = 'ERROR'
+            SET @leyenda = 'Transacción no reconocida'
+        END
+
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0 ROLLBACK
+        SET @respuesta = 'ERROR'
+        SET @leyenda = ERROR_MESSAGE()
+    END CATCH
+
+    SELECT @respuesta AS respuesta, @leyenda AS leyenda
+END
+
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[SP_MACHINERY_SOLANO] (
+    @iTransaccion VARCHAR(50),
+    @iXml XML
+)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @respuesta VARCHAR(50)
+    DECLARE @leyenda VARCHAR(255)
+
+    DECLARE @id INT
+    DECLARE @name VARCHAR(250)
+    DECLARE @type VARCHAR(250)
+    DECLARE @brand VARCHAR(250)
+    DECLARE @model VARCHAR(250)
+    DECLARE @originCountry VARCHAR(250)
+    DECLARE @imageUrl VARCHAR(MAX)
+
+    BEGIN TRY
+        -- Cargar datos desde XML
+        SET @id             = @iXml.value('(/Machinery/Id)[1]', 'INT')
+        SET @name           = @iXml.value('(/Machinery/Name)[1]', 'VARCHAR(250)')
+        SET @type           = @iXml.value('(/Machinery/Type)[1]', 'VARCHAR(250)')
+        SET @brand          = @iXml.value('(/Machinery/Brand)[1]', 'VARCHAR(250)')
+        SET @model          = @iXml.value('(/Machinery/Model)[1]', 'VARCHAR(250)')
+        SET @originCountry  = @iXml.value('(/Machinery/OriginCountry)[1]', 'VARCHAR(250)')
+        SET @imageUrl       = @iXml.value('(/Machinery/ImageUrl)[1]', 'VARCHAR(5000)')
+
+        -- INSERTAR
+        IF @iTransaccion = 'INSERTAR'
+        BEGIN
+            BEGIN TRANSACTION
+
+            INSERT INTO Machinery (Name, Type, Brand, Model, OriginCountry, ImageUrl)
+            VALUES (@name, @type, @brand, @model, @originCountry, @imageUrl)
+
+            COMMIT
+
+            SET @respuesta = 'OK'
+            SET @leyenda = 'Registro insertado correctamente'
+        END
+
+        ELSE IF @iTransaccion = 'ACTUALIZAR'
+        BEGIN
+            UPDATE Machinery
+            SET
+                Name = @name,
+                Type = @type,
+                Brand = @brand,
+                Model = @model,
+                OriginCountry = @originCountry,
+                ImageUrl = @imageUrl
+            WHERE Id = @id
+
+            SET @respuesta = 'OK'
+            SET @leyenda = 'Registro actualizado correctamente'
+        END
+
+        ELSE IF @iTransaccion = 'ELIMINAR'
+        BEGIN
+            DELETE FROM Machinery WHERE Id = @id
+
+            SET @respuesta = 'OK'
+            SET @leyenda = 'Registro eliminado correctamente'
+        END
+
+        ELSE IF @iTransaccion = 'CONSULTAR_TODO'
+        BEGIN
+            SELECT * FROM Machinery
+
+            SET @respuesta = 'OK'
+            SET @leyenda = 'Consulta exitosa'
+        END
+
+        ELSE IF @iTransaccion = 'CONSULTAR_POR_ID'
+        BEGIN
+            SELECT * FROM Machinery WHERE Id = @id
 
             SET @respuesta = 'OK'
             SET @leyenda = 'Consulta exitosa'

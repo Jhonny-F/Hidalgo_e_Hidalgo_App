@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BC4F946E-5042-4DE9-9B1F-88DD7BAD83B1}|Presentation\\Presentation.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{BC4F946E-5042-4DE9-9B1F-88DD7BAD83B1}|Presentation\\Presentation.csproj|solutionrelative:presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC4F946E-5042-4DE9-9B1F-88DD7BAD83B1}|Presentation\\Presentation.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC4F946E-5042-4DE9-9B1F-88DD7BAD83B1}|Presentation\\Presentation.csproj|solutionrelative:presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14F4226C-6946-47BD-B672-CA6EE8700D20}|Infrastructure\\Infrastructure.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\infrastructure\\shared\\dbxmlmethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14F4226C-6946-47BD-B672-CA6EE8700D20}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\shared\\dbxmlmethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14F4226C-6946-47BD-B672-CA6EE8700D20}|Infrastructure\\Infrastructure.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\infrastructure\\implementation\\warehouserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14F4226C-6946-47BD-B672-CA6EE8700D20}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\implementation\\warehouserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC4F946E-5042-4DE9-9B1F-88DD7BAD83B1}|Presentation\\Presentation.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\presentation\\controllers\\warehousecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC4F946E-5042-4DE9-9B1F-88DD7BAD83B1}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\warehousecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14F4226C-6946-47BD-B672-CA6EE8700D20}|Infrastructure\\Infrastructure.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\infrastructure\\implementation\\machineryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14F4226C-6946-47BD-B672-CA6EE8700D20}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\implementation\\machineryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{806D2A2F-2819-47EE-99DF-24073A320A1E}|Domain\\Domain.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\domain\\models\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{806D2A2F-2819-47EE-99DF-24073A320A1E}|Domain\\Domain.csproj|solutionrelative:domain\\models\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{806D2A2F-2819-47EE-99DF-24073A320A1E}|Domain\\Domain.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\domain\\models\\machinery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{806D2A2F-2819-47EE-99DF-24073A320A1E}|Domain\\Domain.csproj|solutionrelative:domain\\models\\machinery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC4F946E-5042-4DE9-9B1F-88DD7BAD83B1}|Presentation\\Presentation.csproj|c:\\users\\villamar\\desktop\\hidalgo_e_hidalgo_app\\heh-warehouse-api\\presentation\\controllers\\machinerycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC4F946E-5042-4DE9-9B1F-88DD7BAD83B1}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\machinerycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,115 +13,20 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 260,
-          "SelectedChildIndex": 4,
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:254354193:0:{71f361cc-493f-47c0-923f-f2570b6f8618}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WarehouseRepository.cs",
-              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Infrastructure\\Implementation\\WarehouseRepository.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Implementation\\WarehouseRepository.cs",
-              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Infrastructure\\Implementation\\WarehouseRepository.cs",
-              "RelativeToolTip": "Infrastructure\\Implementation\\WarehouseRepository.cs",
-              "ViewState": "AgIAAGcAAAAAAAAAAAAgwHcAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T02:21:54.438Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MachineryRepository.cs",
-              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Infrastructure\\Implementation\\MachineryRepository.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Implementation\\MachineryRepository.cs",
-              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Infrastructure\\Implementation\\MachineryRepository.cs",
-              "RelativeToolTip": "Infrastructure\\Implementation\\MachineryRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T02:21:53.8Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DBXmlMethods.cs",
-              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Infrastructure\\Shared\\DBXmlMethods.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Shared\\DBXmlMethods.cs",
-              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Infrastructure\\Shared\\DBXmlMethods.cs",
-              "RelativeToolTip": "Infrastructure\\Shared\\DBXmlMethods.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAowC0AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T02:20:51.956Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Presentation\\appsettings.json",
-              "RelativeDocumentMoniker": "Presentation\\appsettings.json",
-              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Presentation\\appsettings.json",
-              "RelativeToolTip": "Presentation\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAChAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-11T02:21:38.444Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Presentation\\Program.cs",
-              "RelativeDocumentMoniker": "Presentation\\Program.cs",
-              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Presentation\\Program.cs",
-              "RelativeToolTip": "Presentation\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Title": "MachineryController.cs",
+              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Presentation\\Controllers\\MachineryController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\MachineryController.cs",
+              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Presentation\\Controllers\\MachineryController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\MachineryController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAmwCIAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T02:15:19.399Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "WarehouseController.cs",
-              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Presentation\\Controllers\\WarehouseController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Controllers\\WarehouseController.cs",
-              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Presentation\\Controllers\\WarehouseController.cs",
-              "RelativeToolTip": "Presentation\\Controllers\\WarehouseController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAowCMAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T02:12:40.079Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Warehouse.cs",
-              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Domain\\Models\\Warehouse.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Warehouse.cs",
-              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Domain\\Models\\Warehouse.cs",
-              "RelativeToolTip": "Domain\\Models\\Warehouse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T02:12:02.172Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Machinery.cs",
-              "DocumentMoniker": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Domain\\Models\\Machinery.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Machinery.cs",
-              "ToolTip": "C:\\Users\\VILLAMAR\\Desktop\\Hidalgo_e_Hidalgo_App\\HeH-Warehouse-API\\Domain\\Models\\Machinery.cs",
-              "RelativeToolTip": "Domain\\Models\\Machinery.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T02:12:00.395Z",
+              "WhenOpened": "2025-07-14T01:05:32.497Z",
               "EditorCaption": ""
             }
           ]

@@ -6,5 +6,5 @@ export interface WarehouseModel {
     email: string;
     yearsOfExperience: number;
     shift: string;
-    esEdicion?: boolean;
+    transaccion?: string
 }

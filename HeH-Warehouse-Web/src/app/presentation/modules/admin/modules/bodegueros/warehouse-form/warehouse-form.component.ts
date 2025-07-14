@@ -60,6 +60,7 @@ export class WarehouseFormComponent implements OnInit {
       if (confirmed) {
 
         const warehouseData: WarehouseModel = this.form.value;
+        warehouseData.transaccion = "";
         const request$ = this.data.mode === 'edit'
           ? this._warehouseService.update(warehouseData)
           : this._warehouseService.create(warehouseData);
@@ -83,7 +84,7 @@ export class WarehouseFormComponent implements OnInit {
 
   private initializeForm(): void {
     this.form = this._fb.group({
-      id: [''],
+      id: [0],
       fullName: ['', Validators.required],
       identification: ['', Validators.required],
       phone: ['', Validators.required],
