@@ -7,6 +7,8 @@ builder.Services.AddCustomCors();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddConstructionMaterialServices();
+
 
 var app = builder.Build();
 
