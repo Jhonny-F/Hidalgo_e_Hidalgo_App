@@ -231,3 +231,66 @@ BEGIN
 
     SELECT @respuesta AS respuesta, @leyenda AS leyenda
 END
+CREATE TABLE Materials (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre NVARCHAR(100) NOT NULL,
+    Cantidad INT NOT NULL DEFAULT 0,
+    UnidadMedida NVARCHAR(50) NOT NULL,
+    Ubicacion NVARCHAR(100) NOT NULL,
+    FechaCreacion DATETIME DEFAULT GETDATE()
+);
+GO  
+CREATE PROCEDURE SP_MATERIALS_BASIC
+    @Accion VARCHAR(20),
+    @Nombre NVARCHAR(100) = NULL,
+    @Cantidad INT = NULL,
+    @UnidadMedida NVARCHAR(50) = NULL,
+    @Ubicacion NVARCHAR(100) = NULL,
+    @Id INT = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    -- CREAR
+    IF @Accion = 'CREAR'
+    BEGIN
+        INSERT INTO Materials (Nombre, Cantidad, UnidadMedida, Ubicacion)
+        VALUES (@Nombre, @Cantidad, @UnidadMedida, @Ubicacion);
+        
+        SELECT SCOPE_IDENTITY() AS Id, 'Material creado exitosamente' AS Mensaje;
+        RETURN;
+    END;
+    
+    -- ACTUALIZAR
+    IF @Accion = 'ACTUALIZAR' AND @Id IS NOT NULL
+    BEGIN
+        UPDATE Materials SET
+            Nombre = @Nombre,
+            Cantidad = @Cantidad,
+            UnidadMedida = @UnidadMedida,
+            Ubicacion = @Ubicacion
+        WHERE Id = @Id;
+        
+        SELECT @Id AS Id, 'Material actualizado exitosamente' AS Mensaje;
+        RETURN;
+    END;
+    
+    -- CONSULTAR TODOS
+    IF @Accion = 'CONSULTAR'
+    BEGIN
+        SELECT 
+            Id,
+            Nombre,
+            Cantidad,
+            UnidadMedida,
+            Ubicacion,
+            FechaCreacion
+        FROM Materials
+        ORDER BY Nombre;
+        RETURN;
+    END;
+    
+    -- Error si no se reconoce la acción
+    SELECT -1 AS Id, 'Acción no reconocida' AS Mensaje;
+END;
+GO  
