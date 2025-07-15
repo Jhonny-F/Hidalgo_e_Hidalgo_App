@@ -231,3 +231,7 @@ BEGIN
 
     SELECT @respuesta AS respuesta, @leyenda AS leyenda
 END
+INSERT INTO Machinery (Name, Type, Brand, Model, OriginCountry, ImageUrl)
+VALUES ('Excavadora', 'Pesada', 'Caterpillar', '320D', 'USA', 'https://example.com/excavadora.jpg')
+
+SELECT * FROM Machinery
